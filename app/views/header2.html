@@ -1,0 +1,147 @@
+
+
+<div class="header container-fluid">
+
+    <div class="container">
+          <div class="row">
+              <div class="col-md-3">
+                  <img src="images/ceb_logo.png">
+              </div>
+
+              <div class="col-md-6">
+                <div class="input-group stylish-input-group">
+                    <input type="text" class="form-control"  placeholder="Search" >
+                    <span class="input-group-addon">
+                        <button type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+              </div>
+
+
+
+
+
+
+              <div class="col-md-3 removePadding">
+                <div class="col-md-6 removePadding">
+                <div class="pull-right">
+                  <span class="fa fa-user" aria-hidden="true" style="color:#0070d2; font-size:25px; vertical-align:bottom;"></span>
+                  &nbsp;
+                  <span style="color:#0a73bd; font-weight:normal;"><a href="#/login" style="margin-top:4px;">Login</a></span>
+                </div>
+                </div>
+
+                <div class="col-md-6 removePadding">
+                <div class="pull-right cebG-btn">
+                  <span class="fa fa-globe" aria-hidden="true" style="color:#0070d2; font-size:25px; vertical-align:bottom;"></i></span>
+                  &nbsp;
+                  <span style="color:#0a73bd; font-weight:normal;">CEB Global</span>
+                </div>
+                </div>
+
+                <div class="cebGlobal">
+                    <ul>
+                        <li>Australlia</li>
+                        <li>China</li>
+                        <li>Duetschland</li>
+                        <li>India</li>
+                        <li>Singapore</li>
+                        <li>South Africa</li>
+                        <li>United Kingdom</li>
+                    </ul>
+                </div>
+
+                <!--<div class="row">
+                  <div class="col-md-7 removePadding" style="margin-top:8px;">
+                    <div class="pull-right">
+                    <div class="cebG-btn">
+                    <label style="color:#0070d2; font-weight:normal;"><i class="fa fa-globe" aria-hidden="true"></i> CEB Global</label>
+                    </div>
+                    </div>
+                    <div class="cebGlobal">
+                        <ul>
+                            <li>Australlia</li>
+                            <li>China</li>
+                            <li>Duetschland</li>
+                            <li>India</li>
+                            <li>Singapore</li>
+                            <li>South Africa</li>
+                            <li>United Kingdom</li>
+                        </ul>
+                    </div>
+                  </div>
+
+                  <div class="col-md-5 pull-right" style="padding-left:0px; margin-top:8px;">
+                    <div class="cart-btn">
+                        <a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>My Cart</a>
+                    </div>
+                    &nbsp;
+                    <div class="minicart">
+                        <table class="table">
+                            <tr>
+                                <td colspan="4" style="background-color:#1273cf; color:#f8f8f8; font-size:16px;"><b>My Cart</b></td>
+                            </tr>
+                            <tr>
+                                <td><img src="http://placehold.it/50x50"/></td>
+                                <td><p><a href="#">CIO OnSite</a></p>
+                                    <p style="color:#be1313;">2 x $9,800.00</p>
+                                </td>
+                                <td><center><button class="btn btn-xs product_cart_remove">X</button></center></td>
+                            </tr>
+                            <tr class="total_checkout_cart">
+                                <td style="color:#be1313;">Total:</td>
+                                <td colspan="2" style="color:#be1313;">$9,800.00</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td colspan="2"><a href="#/product_cart" class="cebBTN btn btn-md pull-right">View Cart</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                  </div>
+                </div>-->
+
+
+
+              </div>
+          </div>
+
+    </div>
+
+  <ul class="nav nav-pills">
+      <li><a ng-href="#/search2">Invoice Look Up</a></li>
+      <li><a ng-href="#/contactus2">Contact Us</a></li>
+  </ul>
+</div>
+
+<script>
+
+$( document ).ready(function() {
+  $('ul.nav-pills li a').click(function (e) {
+  $('ul.nav-pills li.active').removeClass('active')
+  $(this).parent('li').addClass('active')
+  })
+});
+
+$(document).ready(function () {
+    $(".cart-btn, .minicart").hover(
+
+    function () {
+        $(".minicart").stop().slideDown(100);
+    }, function () {
+        $(".minicart").stop().slideUp(100);
+    });
+});
+
+$(document).ready(function () {
+    $(".cebG-btn, .cebGlobal").hover(
+
+    function () {
+        $(".cebGlobal").stop().slideDown(100);
+    }, function () {
+        $(".cebGlobal").stop().slideUp(100);
+    });
+});
+</script>

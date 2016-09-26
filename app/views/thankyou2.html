@@ -1,0 +1,40 @@
+<body ng-app="stockDogApp">
+<div ng-include="'views/header.html'" class="container-fluid"></div>
+<div class="container">
+
+<div class="row">
+    <div class="col-md-12 bc">
+        <ul class="breadcrumb">
+			<li class="completed"><a href="javascript:void(0);">Search</a></li>
+      <li class="completed"><a href="javascript:void(0);">Search Result</a></li>
+			<li class="completed"><a href="javascript:void(0);">Invoice</a></li>
+			<li class="completed"><a href="javascript:void(0);">Payment</a></li>
+            <li class="active"><a href="javascript:void(0);">Thank You</a></li>
+		</ul>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="headerContainer">
+        <div class="row">
+            <div class="col-md-12 text-center">
+            <br>
+            <span class="glyphicon glyphicon-ok-sign"></span>
+            <h1>Thank you!</h1>
+            <p>Your confirmation number is <b>ABC1234</b></p>
+            <p>Your payment of $385.00 has been received with confirmation number ABC1234 on Tuesday July 5, 2016</p>
+            <p>Your balance will be updated in 24-36hrs.</p>
+        </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+    <script>
+        document.getElementById("DateToday").innerHTML = Date();
+    </script>
+</div>
+</body>

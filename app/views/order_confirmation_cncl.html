@@ -1,0 +1,269 @@
+<body ng-app="stockDogApp">
+<div ng-include="'views/header.html'" class="container-fluid"></div>
+<div class="container" style="margin-bottom:35px;">
+
+<div class="row" id="printInv">
+
+    <div class="Gheader" style="border:1px solid #00aeef;">
+        <h4 class="col-sm-11 removePadding removeMarginTop">Order Information</h4>
+        <!--<a class="col-sm-1" style="color:white; line-height:35px;"><i class="fa fa-pencil" aria-hidden="true"></i> New</a>-->
+        </div>
+    <div class="headerContainer" style="padding-bottom:0px !important;">
+        <div class="row" ng-controller="orderConCtrl">
+        <div class="col-md-12">
+            <div id="orders">
+                <span><b>Order Number:</b></span> <span>{{orderConfirmDetails.OrderNum}}</span>
+                <div class="pull-right" style="color:#00AEEF;">
+                <label class="ordercon_orderstat fw400">Status: </label>&nbsp;<label class="ordercon_orderstat"> Cancelled</label>
+                </div>
+            </div>
+
+            <div id="purchaseddate">
+                <span>Purchased on:</span> <span>{{orderConfirmDetails.PurchasedDate}} by</span> <span>John Doe</span>
+            </div>
+            <br>
+            <span>Order Details:</span>
+        </div>
+
+
+        </div>
+
+        <div class="row order_summaryT removePadding" ng-controller="populated_data" style="padding-top:5px !important;">
+            <div class="com-md-12">
+              <table class="table table-responsive" border="0" style="border:0; margin-bottom:5px;">
+                  <tbody>
+                    <tr class="heading">
+                        <td class="tdInv">
+                            Product Item
+                        </td>
+
+                        <td class="tdInv">
+                            Unit Price
+                        </td>
+
+                        <td class="tdInv">
+                          Quantity
+                        </td>
+
+                        <td class="tdInv ordercon_totalTD">
+                            Total
+                        </td>
+                    </tr>
+
+                    <tr class="item">
+                        <td>
+                            {{invoice.Item1}}
+                        </td>
+
+                        <td>
+                            <label ng-model="itempr1" class="ordercon_priceClr">${{invoice.Item1Price}}</label>
+                        </td>
+
+                        <td>
+                            {{invoice.Quantity}}
+                        </td>
+
+                        <td style="text-align:right;">
+                            <label ng-model="itempr1" class="ordercon_priceClr">${{invoice.Item1Price}}</label>
+                        </td>
+                    </tr>
+
+                    <tr class="item">
+                        <td>
+                            {{invoice.Item2}}
+                        </td>
+
+                        <td>
+                            <label ng-model="itempr2" class="ordercon_priceClr">${{invoice.Item2Price}}</label>
+                        </td>
+
+                        <td>
+                            {{invoice.Quantity}}
+                        </td>
+
+                        <td style="text-align:right;">
+                            <label ng-model="itempr2" class="ordercon_priceClr">${{invoice.Item2Price}}</label>
+                        </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="table table-responsive tblTtl" border="0" style="border:0;">
+                  <tbody>
+
+                    <tr class="total">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+
+                        <td class="ordercon_subT">
+                           <label class="control-label">Sub Total:<span class="ordercon_priceClr"> $NaN</span></label>
+                        </td>
+                    </tr>
+
+                    <tr class="total">
+                        <td style="border-top:0px;"></td>
+                        <td style="border-top:0px;"></td>
+                        <td style="border-top:0px;"></td>
+
+                        <td class="ordercon_subT">
+                           <label class="control-label">Estimated Tax:<span class="ordercon_priceClr"> $NaN</span></label>
+                        </td>
+                    </tr>
+
+                    <tr class="total">
+                        <td style="border-top:0px;"></td>
+                        <td style="border-top:0px;"></td>
+                        <td style="border-top:0px;"></td>
+
+                        <td class="ordercon_subT">
+                           <label class="control-label">Promotional Discount:<span class="ordercon_priceClr"> $NaN</span></label>
+                        </td>
+                    </tr>
+
+                    <tr class="total">
+                        <td style="border-top:0px;"></td>
+                        <td style="border-top:0px;"></td>
+                        <td style="border-top:0px;"></td>
+
+                        <td class="ordercon_subT">
+                           <label class="control-label">Total: <label class="ordercon_priceClr">${{invoice.Item1Price + invoice.Item2Price}}</label></label>
+                        </td>
+                    </tr>
+
+                  </tbody>
+              </table>
+            </div>
+        </div>
+
+        <div class="row" ng-controller="populated_data">
+        <form editable-form name="editableForm" onaftersave="saveUser()">
+
+        <div class="Gheader pcart_mtop" style="border:1px solid #00aeef;">
+          <h4 class="removeMarginTop removePadding" style="text-indent:20px;">Billing Details</h4>
+        </div>
+          <div class="row" style="margin-right: 0px; margin-left: 0px;">
+
+            <div class="col-xs-6 removePadding">
+            <table class="table table-responsive" style="width:100%; border-right:1px solid #e4e4e4; border-left:1px solid #e4e4e4;">
+              <tr>
+                <td style="padding-top:0px; border-top:0px !important; width:48%;">
+                  <h4 class="col-md-12" style="color:#2BC4B6;">Personal Information</h4>
+
+                  <div class="form-group col-md-12 removeMarginBottom">
+                      <span editable-text="invoice.Name" e-label="First Name" onbeforesave="validateTField($data)">{{invoice.FirstName}} {{invoice.LastName}}</span>
+                  </div>
+
+                  <div class="removeMarginBottom form-group col-md-12">
+                      <span editable-text="invoice.Street" e-label="Street" onbeforesave="validateTField($data)">{{invoice.Street}}</span>
+                  </div>
+
+                  <div class="form-group col-md-12">
+                      <span editable-text="invoice.City" e-label="City" onbeforesave="validateTField($data)">{{invoice.City}}</span>
+                      <span editable-text="invoice.StateProv" e-label="State" onbeforesave="validateTField($data)">{{invoice.StateProv}}</span>
+                      <span editable-text="invoice.ZipPostal" e-label="Zip Code" onbeforesave="validateTField($data)">{{invoice.ZipPostal}}</span>
+                  </div>
+                  <div class="removeMarginBottom form-group col-md-12">
+                      <span editable-text="invoice.Email" e-label="Email" onbeforesave="validateTField($data)">{{invoice.Email}}</span>
+                  </div>
+
+                  <div class="removeMarginBottom form-group col-md-12">
+                      <label for="Ph" class="control-label" style="margin-bottom:0px !important;">Phone:</label>
+                      <span editable-text="invoice.PhoneNum" e-name="Ph" onbeforesave="validateTField($data)">{{invoice.PhoneNum}}</span>
+                  </div>
+
+                  <div class="form-group col-md-12">
+                      <label for="Ph" class="control-label" style="margin-bottom:0px !important;">Mobile:</label>
+                      <span editable-text="invoice.MobileNum" e-name="Mobile" onbeforesave="validateTField($data)">{{invoice.MobileNum}}</span>
+                  </div>
+                </td>
+
+                <td style="padding-top:0px;  border-top:0px !important; width:48%;">
+                  <h4 class="col-md-12" style="color:#2BC4B6;">Payment Summary</h4>
+                  <h5 class="col-md-12" style="margin:0px 0px 5px 0px !important;">Payment Method: Credit Card</h5>
+
+                  <div class="removeMarginBottom form-group col-md-12">
+                      <span editable-text="invoice.CreditCard" e-label="Country" onbeforesave="validateTField($data)">{{invoice.CreditCard}}</span>
+                  </div>
+
+                  <div class="removeMarginBottom form-group col-md-12">
+                      <span editable-text="invoice.CreditCardHolder" e-label="Country" onbeforesave="validateTField($data)">{{invoice.CreditCardHolder}}</span>
+                  </div>
+
+                  <div class="form-group col-md-12">
+                      <span editable-text="invoice.CreditCardNumx" e-label="Country" onbeforesave="validateTField($data)">{{invoice.CreditCardNumx}}</span>
+                  </div>
+                </td>
+              </tr>
+
+                <tr>
+                  <td colspan="2" style="border-top:0px; padding-top:0px;">
+                  <div class="removeMarginBottom form-group col-md-12">
+                      <span editable-text="invoice.Country" e-label="Country" onbeforesave="validateTField($data)">{{invoice.Country}}</span>
+                  </div>
+
+                  <div class="form-group col-md-12">
+                      <span editable-text="invoice.Timezone" e-label="Timezone" onbeforesave="validateTField($data)">{{invoice.Timezone}}</span>
+                  </div>
+                </td>
+              </tr>
+
+
+
+            </table>
+            </div>
+
+            <div class="col-xs-6 removePadding">
+              <table class="table table-responsive" style="width:100%; border-left:1px solid #e4e4e4;">
+                <tr>
+                    <td style="border-top:0px; padding-top:0px;">
+                      <h4 style="color:#2BC4B6;">Company Information</h4>
+
+                      <div class="form-group col-md-12" style="padding-left:0px;">
+                          <span>{{invoice.Company}}</span>
+                      </div>
+
+                      <div class="form-group col-md-12" style="padding-left:0px;">
+
+                          <span>{{invoice.CompanyAddress}}</span>
+
+                      </div>
+                    </td>
+                </tr>
+              </table>
+            </div>
+            <button onclick="printDiv('printInv')" class="no-printpdf cebBTN btn btn-lg pull-right" style="margin-top:45px; margin-right:15px;">Print Pdf</button>
+          </div>
+
+        </form>
+        </div>
+
+      </div>
+
+
+
+
+    <script>
+    function printDiv(printInv) {
+         var printContents = document.getElementById(printInv).innerHTML;
+         var originalContents = document.body.innerHTML;
+
+         document.body.innerHTML = printContents;
+
+         if (window.print()) {
+            return false;
+          } else {
+            location.reload();
+          }
+
+         document.body.innerHTML = originalContents;
+
+
+
+    }
+
+    </script>
+
+</div>
+</div>
+</body>

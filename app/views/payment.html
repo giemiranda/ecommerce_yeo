@@ -1,0 +1,804 @@
+<body ng-app="stockDogApp">
+<div ng-include="'views/header.html'" class="container-fluid"></div>
+<div class="container">
+
+<style>
+.errorinput {
+  color: #850000;
+  background: rgba(254, 186, 186, 0.5);
+  border: 1px solid #850000;
+}
+</style>
+
+<div class="row">
+    <div class="col-md-10 bc">
+        <ul class="breadcrumb">
+			<li class="completed"><a href="javascript:void(0);">Search</a></li>
+      <li class="completed"><a href="javascript:void(0);">Search Result</a></li>
+			<li class="completed"><a href="javascript:void(0);">Invoice</a></li>
+			<li class="active"><a href="javascript:void(0);">Payment</a></li>
+		</ul>
+    </div>
+    <div class="col-md-2 pull-right">
+    </div>
+</div>
+<div class="row">
+    <a class="pull-right" data-toggle="tooltip" title="Lorem Ipsum Sit Et Dolor.">Need Assistance?</a>
+    <br>
+
+    <script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+    </script>
+
+    <div class="Gheader">
+        <h4>Invoice Summary</h4>
+    </div>
+    <div class="headerContainer" style="padding-bottom:0px !important;">
+        <div class="row order_summaryT">
+            <div class="com-md-12">
+                <table class="table table-responsive table-striped" border="0" style="margin-bottom:0px;border:0;">
+                    <tbody>
+                      <tr class="heading">
+                          <td class="tdInv">
+                              Product Item
+                          </td>
+
+                          <td class="tdInv">
+                              Unit Price
+                          </td>
+
+                          <td class="tdInv" style="width:70px;">
+                            Quantity
+                          </td>
+
+                          <td class="tdInv" style="text-align:right; width:25%;">
+                              Total
+                          </td>
+                      </tr>
+
+                      <tr class="item">
+                          <td>
+                              {{invoice.Item1}}
+                          </td>
+
+                          <td>
+                              <label ng-model="itempr1" style="color:#850606;">${{invoice.Item1Price}}</label>
+                          </td>
+
+                          <td>
+                              {{invoice.Quantity}}
+                          </td>
+
+                          <td style="text-align:right;">
+                              <label ng-model="itempr1" style="color:#850606;">${{invoice.Item1Price}}</label>
+                          </td>
+                      </tr>
+
+                      <tr class="item">
+                          <td>
+                              {{invoice.Item2}}
+                          </td>
+
+                          <td>
+                              <label ng-model="itempr2" style="color:#850606;">${{invoice.Item2Price}}</label>
+                          </td>
+
+                          <td>
+                              {{invoice.Quantity}}
+                          </td>
+
+                          <td style="text-align:right;">
+                              <label ng-model="itempr2" style="color:#850606;">${{invoice.Item2Price}}</label>
+                          </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <table class="table table-responsive" border="0" style="border:0;">
+                      <tbody>
+
+                      <tr class="total">
+                          <td style="border-top:0px;"></td>
+                          <td style="border-top:0px;"></td>
+                          <td style="border-top:0px;"></td>
+
+                          <td style="border-top:0px; text-align:right; padding-top:2px; padding-bottom:2px;">
+                             <label class="control-label" style="margin-bottom:0px; font-size:15px;">Sub Total:<span style="color:#850606;"> $NaN</span></label>
+                          </td>
+                      </tr>
+
+                      <tr class="total">
+                          <td style="border-top:0px;"></td>
+                          <td style="border-top:0px;"></td>
+                          <td style="border-top:0px;"></td>
+
+                          <td style="border-top:0px; text-align:right; padding-top:2px; padding-bottom:2px;">
+                             <label class="control-label" style="margin-bottom:0px; font-size:15px;">Estimated Tax:<span style="color:#850606;"> $NaN</span></label>
+                          </td>
+                      </tr>
+
+                      <tr class="total">
+                          <td style="border-top:0px;"></td>
+                          <td style="border-top:0px;"></td>
+                          <td style="border-top:0px;"></td>
+
+                          <td style="border-top:0px; text-align:right; padding-top:2px; padding-bottom:2px;">
+                             <label class="control-label" style="margin-bottom:0px; font-size:15px;">Promotional Discount:<span style="color:#850606;"> $NaN</span></label>
+                          </td>
+                      </tr>
+
+                      <tr class="total">
+                          <td style="border-top:0px;"></td>
+                          <td style="border-top:0px;"></td>
+                          <td style="border-top:0px;"></td>
+
+                          <td style="border-top:0px; text-align:right; padding-top:2px; padding-bottom:2px;">
+                             <label class="control-label" style="margin-bottom:0px; font-size:15px;font-weight:bold;">Total: <span style="color:#850606;">${{invoice.Item1Price + invoice.Item2Price}}</span></label>
+                          </td>
+                      </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+    $( document ).ready(function() {
+      $("#name").hide();
+      $("#Strt").hide();
+      $("#City").hide();
+      $("#State").hide();
+      $("#Zip").hide();
+
+      $("#Eml").hide();
+      $("#Phnum").hide();
+      $("#Mblnum").hide();
+
+      $("#Cntry").hide();
+      $("#Tmz").hide();
+
+      $("#Cmp").hide();
+      $("#CmpAddr").hide();
+
+      $(".cancelBtn").hide();
+      $(".saveBtn").hide();
+
+      $(".editLink").click (function(){
+          $("#name").toggle(); // problem here...
+          $("#lblName").toggle();
+          $("#Strt").toggle(); // problem here...
+          $("#lblStrt").toggle();
+          $("#City").toggle();
+          $("#lblCity").toggle();
+          $("#State").toggle(); // problem here...
+          $("#lblState").toggle();
+          $("#Zip").toggle();
+          $("#lblZip").toggle();
+
+          $("#lblEml").toggle();
+          $("#Eml").toggle();
+          $("#lblPhnum").toggle();
+          $("#Phnum").toggle();
+          $("#lblMblnum").toggle();
+          $("#Mblnum").toggle();
+
+          $("#lblCntry").toggle();
+          $("#Cntry").toggle();
+          $("#lblTmz").toggle();
+          $("#Tmz").toggle();
+
+          $(".editLink").hide();
+          $(".cancelBtn").show();
+          $(".saveBtn").show();
+
+      });
+
+      $(".cancelBtn").click (function(){
+          $("#name").toggle(); // problem here...
+          $("#lblName").toggle();
+          $("#Strt").toggle(); // problem here...
+          $("#lblStrt").toggle();
+          $("#City").toggle();
+          $("#lblCity").toggle();
+          $("#State").toggle(); // problem here...
+          $("#lblState").toggle();
+          $("#Zip").toggle();
+          $("#lblZip").toggle();
+
+          $("#lblEml").toggle();
+          $("#Eml").toggle();
+          $("#lblPhnum").toggle();
+          $("#Phnum").toggle();
+          $("#lblMblnum").toggle();
+          $("#Mblnum").toggle();
+
+          $("#lblCntry").toggle();
+          $("#Cntry").toggle();
+          $("#lblTmz").toggle();
+          $("#Tmz").toggle();
+
+          $(".editLink").show();
+          $(".cancelBtn").hide();
+          $(".saveBtn").hide();
+      });
+
+      $(".saveBtn").click (function(){
+          $("#name").toggle(); // problem here...
+          $("#lblName").toggle();
+          $("#Strt").toggle(); // problem here...
+          $("#lblStrt").toggle();
+          $("#City").toggle();
+          $("#lblCity").toggle();
+          $("#State").toggle(); // problem here...
+          $("#lblState").toggle();
+          $("#Zip").toggle();
+          $("#lblZip").toggle();
+
+          $("#lblEml").toggle();
+          $("#Eml").toggle();
+          $("#lblPhnum").toggle();
+          $("#Phnum").toggle();
+          $("#lblMblnum").toggle();
+          $("#Mblnum").toggle();
+
+          $("#lblCntry").toggle();
+          $("#Cntry").toggle();
+          $("#lblTmz").toggle();
+          $("#Tmz").toggle();
+
+
+          $(".editLink").show();
+          $(".cancelBtn").hide();
+          $(".saveBtn").hide();
+      });
+    });
+    </script>
+
+    <script>
+    $(document).ready(function() {
+      $('#cntry').bind('change', function() {
+          var elements = $('div.dd2').children().hide(); // hide all the elements
+          var value = $(this).val();
+
+          if (value.length) { // if somethings' selected
+              elements.filter('.' + value).show(); // show the ones we want
+          }
+      }).trigger('change');
+    });
+    </script>
+
+    <script>
+
+    $(document).ready(function() {
+        $('.cnt_zip').bind('change', function() {
+            var elements = $('div.zp').children().hide(); // hide all the elements
+            var value = $(this).val();
+
+            if (value.length) { // if somethings' selected
+                elements.filter('.' + value).show(); // show the ones we want
+            }
+        }).trigger('change');
+    });
+
+    </script>
+
+    <script>
+
+    $(document).ready(function() {
+        $('.cnt_zip').bind('change', function() {
+            var elements = $('div.zp').children().hide(); // hide all the elements
+            var value = $(this).val();
+
+            if (value.length) { // if somethings' selected
+                elements.filter('.' + value).show(); // show the ones we want
+            }
+        }).trigger('change');
+    });
+
+    </script>
+
+    <script>
+
+    $(document).ready(function() {
+        $('.cnt_zipcd').bind('change', function() {
+            var elements = $('div.zpcode').children().hide(); // hide all the elements
+            var value = $(this).val();
+
+            if (value.length) { // if somethings' selected
+                elements.filter('.' + value).show(); // show the ones we want
+            }
+        }).trigger('change');
+    });
+
+    </script>
+
+
+<div ng-controller="populated_data" style="margin-top:-18px;">
+<form>
+    <div class="Gheader">
+            <h4 class="col-sm-10" style="text-indent:0px; line-height:0px; margin-top:15px;">1. Billing Information</h4>
+
+        </div>
+    <div class="headerContainer">
+        <div class="row">
+        <div class="col-md-12">
+        <div class="row">
+
+          <div class="col-md-6" style="border-right:1px solid #e4e4e4; padding-right:0px !important;">
+            <h4 class="col-md-9" style="color:#2BC4B6;">Personal Information</h4>
+            <div class="col-md-3" style="line-height:35px;">
+              <a class="editLink" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
+            </div>
+
+            <div style="margin-bottom:0px !important;" class="form-group col-md-12 ">
+              <div id="Eml">
+                <label>Username:</label>
+                <label class="fw400">{{invoice.Email}}</label>
+              </div>
+            </div>
+
+            <div class="col-md-6" style="padding-left:0px;">
+
+            <div style="margin-bottom:0px !important;" class="form-group col-md-12 ">
+                <span id="lblName">{{invoice.Name}}</span>
+                <div id="name" style="margin-top:5px;">
+                <label>Name:</label>
+                <input class="form-control" value="{{invoice.Name}}" type="text" name="comment">
+                </div>
+
+                <div id="Cntry" style="margin-top:5px !important;" class="removePadding form-group col-md-12 ">
+                    <label>Country:</label>
+                    <select class="form-control cnt_zip cnt_zipcd" id="cntry" title="" name="cntry">
+                        <option value="">--Select Country--</option>
+                        <option value="US" selected>United States</option>
+                        <option value="UK">United Kingdom</option>
+                        <option value="CND">Canada</option>
+                        <option value="OTH">Others</option>
+                    </select>
+                </div>
+
+                <div class="dd2">
+                <div class="OTH">
+                    <select class="form-control" id="cntry" title="" name="cntry" style="margin-top:5px; margin-bottom:13px;">
+                        <option>--Select Country--</option>
+                        <option>United Statesdsadas</option>
+                        <option>United Kingdomdsadasdas</option>
+                        <option>Canadadasdasdas</option>
+                        <option>Othersdasdasdas</option>
+                    </select>
+                </div>
+                </div>
+
+            </div>
+
+            <div style="margin-bottom:0px !important;" class="form-group col-md-12 ">
+                <span id="lblStrt">{{invoice.Street}}</span>
+            </div>
+
+            <div class="form-group col-md-12 ">
+                <span id="lblCity">{{invoice.City}}</span>
+                <span id="lblState">{{invoice.StateProv}}</span>
+                <span id="lblZip">{{invoice.ZipPostal}}</span>
+            </div>
+
+          </div>
+
+          <div class="col-md-6" style="padding-left:0px; margin-top:5px;">
+
+            <div style="margin-top:-5px !important; ">
+            <div style="margin-bottom:0px !important; " class="form-group col-md-12 ">
+                <span id="lblEml">{{invoice.Email}}</span>
+            </div>
+
+            <div style="margin-bottom:0px !important; margin-top:0px !important;" class="form-group col-md-12 ">
+                <span id="lblPhnum">Ph: {{invoice.PhoneNum}}</span>
+            </div>
+
+            <div class="form-group col-md-12 " style="margin-top:0px !important;">
+                <span id="lblMblnum">Mobile: {{invoice.MobileNum}}</span>
+            </div>
+            </div>
+
+
+          <div style="margin-top:-15px !important;" class="removePaddingLeft form-group col-md-12 removePaddingRight">
+              <div id="Phnum">
+                <label>Ph:</label>
+                <input class="form-control" value="{{invoice.PhoneNum}}" type="text" name="comment">
+              </div>
+          </div>
+
+          <div style="margin-top:-10px !important;" class="removePaddingLeft form-group col-md-12 removePaddingRight">
+              <div id="Mblnum">
+                <label>Mobile</label>
+                <input class="form-control" value="{{invoice.MobileNum}}" type="text" name="comment">
+              </div>
+          </div>
+
+
+
+
+        </div>
+
+        <div class="col-md-12 removePadding">
+        <div style="margin-bottom:0px !important;" class="form-group col-md-12">
+            <span id="lblCntry">{{invoice.Country}}</span>
+        </div>
+
+        <div class="form-group col-md-12 ">
+            <span id="lblTmz">{{invoice.Timezone}}</span>
+        </div>
+
+      </div>
+
+      <div class=" col-md-7">
+
+      </div>
+
+
+      <div class="row">
+        <div class="col-md-12" style="margin-top:-45px;">
+          <div class="form-group col-md-12" style="margin-bottom:3px;">
+            <div id="Strt">
+              <label>Street</label>
+              <input class="form-control" value="{{invoice.Street}}" type="text" name="comment">
+            </div>
+          </div>
+          <div class="col-md-4 removePaddingRight" style="margin-top:3px;">
+            <div id="State">
+              <div class="zp">
+              <label id="stateUSlbl" class="US">State</label>
+              <label id="stateOTHlbl" class="UK CND OTH">State/Prov/Terr</label>
+              </div>
+
+              <div class="dd2">
+
+              <div class="US">
+              <select class="form-control">
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AZ">Arizona</option>
+                <option value="AR">Arkansas</option>
+                <option value="CA" selected>California</option>
+                <option value="CO">Colorado</option>
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="DC">District Of Columbia</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="HI">Hawaii</option>
+                <option value="ID">Idaho</option>
+                <option value="IL">Illinois</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="KS">Kansas</option>
+                <option value="KY">Kentucky</option>
+                <option value="LA">Louisiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="MS">Mississippi</option>
+                <option value="MO">Missouri</option>
+                <option value="MT">Montana</option>
+                <option value="NE">Nebraska</option>
+                <option value="NV">Nevada</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NM">New Mexico</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="ND">North Dakota</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="OR">Oregon</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="SD">South Dakota</option>
+                <option value="TN">Tennessee</option>
+                <option value="TX">Texas</option>
+                <option value="UT">Utah</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
+                <option value="WA">Washington</option>
+                <option value="WV">West Virginia</option>
+                <option value="WI">Wisconsin</option>
+                <option value="WY">Wyoming</option>
+              </select>
+            </div>
+
+            <div class="UK">
+                <input class="form-control" value="" type="text" name="comment">
+            </div>
+            <div class="CND">
+                <input class="form-control" value="" type="text" name="comment">
+            </div>
+            <div class="OTH">
+                <input class="form-control" value="" type="text" name="comment">
+            </div>
+
+            </div>
+
+            </div>
+          </div>
+          <div class="col-md-4" style="margin-top:3px;">
+            <div id="City">
+              <label>City</label>
+              <input class="form-control" value="{{invoice.City}}" type="text" name="comment">
+            </div>
+          </div>
+          <div class="col-md-4 removePaddingLeft" style="margin-top:3px;">
+            <div id="Zip">
+              <div class="zpcode">
+              <label id="zipc" class="US">Zip Code</label>
+              <label id="zippostc" class="UK CND OTH">Postal Code</label>
+              </div>
+              <input class="form-control" value="{{invoice.ZipPostal}}" type="text" name="comment">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div id="Tmz" style="margin-top:5px !important;" class=" form-group col-md-12">
+              <label>Timezone:</label>
+              <select class="form-control">
+                <option timeZoneId="1" gmtAdjustment="GMT-12:00" useDaylightTime="0" value="-12">(GMT-12:00) International Date Line West</option>
+                <option timeZoneId="2" gmtAdjustment="GMT-11:00" useDaylightTime="0" value="-11">(GMT-11:00) Midway Island, Samoa</option>
+                <option timeZoneId="3" gmtAdjustment="GMT-10:00" useDaylightTime="0" value="-10">(GMT-10:00) Hawaii</option>
+                <option timeZoneId="4" gmtAdjustment="GMT-09:00" useDaylightTime="1" value="-9">(GMT-09:00) Alaska</option>
+                <option timeZoneId="5" gmtAdjustment="GMT-08:00" useDaylightTime="1" value="-8">(GMT-08:00) Pacific Time (US & Canada)</option>
+                <option timeZoneId="6" gmtAdjustment="GMT-08:00" useDaylightTime="1" value="-8">(GMT-08:00) Tijuana, Baja California</option>
+                <option timeZoneId="7" gmtAdjustment="GMT-07:00" useDaylightTime="0" value="-7">(GMT-07:00) Arizona</option>
+                <option timeZoneId="8" gmtAdjustment="GMT-07:00" useDaylightTime="1" value="-7">(GMT-07:00) Chihuahua, La Paz, Mazatlan</option>
+                <option timeZoneId="9" gmtAdjustment="GMT-07:00" useDaylightTime="1" value="-7">(GMT-07:00) Mountain Time (US & Canada)</option>
+                <option timeZoneId="10" gmtAdjustment="GMT-06:00" useDaylightTime="0" value="-6">(GMT-06:00) Central America</option>
+                <option timeZoneId="11" gmtAdjustment="GMT-06:00" useDaylightTime="1" value="-6">(GMT-06:00) Central Time (US & Canada)</option>
+                <option timeZoneId="12" gmtAdjustment="GMT-06:00" useDaylightTime="1" value="-6">(GMT-06:00) Guadalajara, Mexico City, Monterrey</option>
+                <option timeZoneId="13" gmtAdjustment="GMT-06:00" useDaylightTime="0" value="-6">(GMT-06:00) Saskatchewan</option>
+                <option timeZoneId="14" gmtAdjustment="GMT-05:00" useDaylightTime="0" value="-5">(GMT-05:00) Bogota, Lima, Quito, Rio Branco</option>
+                <option timeZoneId="15" gmtAdjustment="GMT-05:00" useDaylightTime="1" value="-5">(GMT-05:00) Eastern Time (US & Canada)</option>
+                <option timeZoneId="16" gmtAdjustment="GMT-05:00" useDaylightTime="1" value="-5">(GMT-05:00) Indiana (East)</option>
+                <option timeZoneId="17" gmtAdjustment="GMT-04:00" useDaylightTime="1" value="-4">(GMT-04:00) Atlantic Time (Canada)</option>
+                <option timeZoneId="18" gmtAdjustment="GMT-04:00" useDaylightTime="0" value="-4">(GMT-04:00) Caracas, La Paz</option>
+                <option timeZoneId="19" gmtAdjustment="GMT-04:00" useDaylightTime="0" value="-4">(GMT-04:00) Manaus</option>
+                <option timeZoneId="20" gmtAdjustment="GMT-04:00" useDaylightTime="1" value="-4">(GMT-04:00) Santiago</option>
+                <option timeZoneId="21" gmtAdjustment="GMT-03:30" useDaylightTime="1" value="-3.5">(GMT-03:30) Newfoundland</option>
+                <option timeZoneId="22" gmtAdjustment="GMT-03:00" useDaylightTime="1" value="-3">(GMT-03:00) Brasilia</option>
+                <option timeZoneId="23" gmtAdjustment="GMT-03:00" useDaylightTime="0" value="-3">(GMT-03:00) Buenos Aires, Georgetown</option>
+                <option timeZoneId="24" gmtAdjustment="GMT-03:00" useDaylightTime="1" value="-3">(GMT-03:00) Greenland</option>
+                <option timeZoneId="25" gmtAdjustment="GMT-03:00" useDaylightTime="1" value="-3">(GMT-03:00) Montevideo</option>
+                <option timeZoneId="26" gmtAdjustment="GMT-02:00" useDaylightTime="1" value="-2">(GMT-02:00) Mid-Atlantic</option>
+                <option timeZoneId="27" gmtAdjustment="GMT-01:00" useDaylightTime="0" value="-1">(GMT-01:00) Cape Verde Is.</option>
+                <option timeZoneId="28" gmtAdjustment="GMT-01:00" useDaylightTime="1" value="-1">(GMT-01:00) Azores</option>
+                <option timeZoneId="29" gmtAdjustment="GMT+00:00" useDaylightTime="0" value="0">(GMT+00:00) Casablanca, Monrovia, Reykjavik</option>
+                <option timeZoneId="30" gmtAdjustment="GMT+00:00" useDaylightTime="1" value="0">(GMT+00:00) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London</option>
+                <option timeZoneId="31" gmtAdjustment="GMT+01:00" useDaylightTime="1" value="1">(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna</option>
+                <option timeZoneId="32" gmtAdjustment="GMT+01:00" useDaylightTime="1" value="1">(GMT+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague</option>
+                <option timeZoneId="33" gmtAdjustment="GMT+01:00" useDaylightTime="1" value="1">(GMT+01:00) Brussels, Copenhagen, Madrid, Paris</option>
+                <option timeZoneId="34" gmtAdjustment="GMT+01:00" useDaylightTime="1" value="1">(GMT+01:00) Sarajevo, Skopje, Warsaw, Zagreb</option>
+                <option timeZoneId="35" gmtAdjustment="GMT+01:00" useDaylightTime="1" value="1">(GMT+01:00) West Central Africa</option>
+                <option timeZoneId="36" gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Amman</option>
+                <option timeZoneId="37" gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Athens, Bucharest, Istanbul</option>
+                <option timeZoneId="38" gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Beirut</option>
+                <option timeZoneId="39" gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Cairo</option>
+                <option timeZoneId="40" gmtAdjustment="GMT+02:00" useDaylightTime="0" value="2">(GMT+02:00) Harare, Pretoria</option>
+                <option timeZoneId="41" gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius</option>
+                <option timeZoneId="42" gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Jerusalem</option>
+                <option timeZoneId="43" gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Minsk</option>
+                <option timeZoneId="44" gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Windhoek</option>
+                <option timeZoneId="45" gmtAdjustment="GMT+03:00" useDaylightTime="0" value="3">(GMT+03:00) Kuwait, Riyadh, Baghdad</option>
+                <option timeZoneId="46" gmtAdjustment="GMT+03:00" useDaylightTime="1" value="3">(GMT+03:00) Moscow, St. Petersburg, Volgograd</option>
+                <option timeZoneId="47" gmtAdjustment="GMT+03:00" useDaylightTime="0" value="3">(GMT+03:00) Nairobi</option>
+                <option timeZoneId="48" gmtAdjustment="GMT+03:00" useDaylightTime="0" value="3">(GMT+03:00) Tbilisi</option>
+                <option timeZoneId="49" gmtAdjustment="GMT+03:30" useDaylightTime="1" value="3.5">(GMT+03:30) Tehran</option>
+                <option timeZoneId="50" gmtAdjustment="GMT+04:00" useDaylightTime="0" value="4">(GMT+04:00) Abu Dhabi, Muscat</option>
+                <option timeZoneId="51" gmtAdjustment="GMT+04:00" useDaylightTime="1" value="4">(GMT+04:00) Baku</option>
+                <option timeZoneId="52" gmtAdjustment="GMT+04:00" useDaylightTime="1" value="4">(GMT+04:00) Yerevan</option>
+                <option timeZoneId="53" gmtAdjustment="GMT+04:30" useDaylightTime="0" value="4.5">(GMT+04:30) Kabul</option>
+                <option timeZoneId="54" gmtAdjustment="GMT+05:00" useDaylightTime="1" value="5">(GMT+05:00) Yekaterinburg</option>
+                <option timeZoneId="55" gmtAdjustment="GMT+05:00" useDaylightTime="0" value="5">(GMT+05:00) Islamabad, Karachi, Tashkent</option>
+                <option timeZoneId="56" gmtAdjustment="GMT+05:30" useDaylightTime="0" value="5.5">(GMT+05:30) Sri Jayawardenapura</option>
+                <option timeZoneId="57" gmtAdjustment="GMT+05:30" useDaylightTime="0" value="5.5">(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi</option>
+                <option timeZoneId="58" gmtAdjustment="GMT+05:45" useDaylightTime="0" value="5.75">(GMT+05:45) Kathmandu</option>
+                <option timeZoneId="59" gmtAdjustment="GMT+06:00" useDaylightTime="1" value="6">(GMT+06:00) Almaty, Novosibirsk</option>
+                <option timeZoneId="60" gmtAdjustment="GMT+06:00" useDaylightTime="0" value="6">(GMT+06:00) Astana, Dhaka</option>
+                <option timeZoneId="61" gmtAdjustment="GMT+06:30" useDaylightTime="0" value="6.5">(GMT+06:30) Yangon (Rangoon)</option>
+                <option timeZoneId="62" gmtAdjustment="GMT+07:00" useDaylightTime="0" value="7">(GMT+07:00) Bangkok, Hanoi, Jakarta</option>
+                <option timeZoneId="63" gmtAdjustment="GMT+07:00" useDaylightTime="1" value="7">(GMT+07:00) Krasnoyarsk</option>
+                <option timeZoneId="64" gmtAdjustment="GMT+08:00" useDaylightTime="0" value="8">(GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi</option>
+                <option timeZoneId="65" gmtAdjustment="GMT+08:00" useDaylightTime="0" value="8" selected>(GMT+08:00) Kuala Lumpur, Singapore</option>
+                <option timeZoneId="66" gmtAdjustment="GMT+08:00" useDaylightTime="0" value="8">(GMT+08:00) Irkutsk, Ulaan Bataar</option>
+                <option timeZoneId="67" gmtAdjustment="GMT+08:00" useDaylightTime="0" value="8">(GMT+08:00) Perth</option>
+                <option timeZoneId="68" gmtAdjustment="GMT+08:00" useDaylightTime="0" value="8">(GMT+08:00) Taipei</option>
+                <option timeZoneId="69" gmtAdjustment="GMT+09:00" useDaylightTime="0" value="9">(GMT+09:00) Osaka, Sapporo, Tokyo</option>
+                <option timeZoneId="70" gmtAdjustment="GMT+09:00" useDaylightTime="0" value="9">(GMT+09:00) Seoul</option>
+                <option timeZoneId="71" gmtAdjustment="GMT+09:00" useDaylightTime="1" value="9">(GMT+09:00) Yakutsk</option>
+                <option timeZoneId="72" gmtAdjustment="GMT+09:30" useDaylightTime="0" value="9.5">(GMT+09:30) Adelaide</option>
+                <option timeZoneId="73" gmtAdjustment="GMT+09:30" useDaylightTime="0" value="9.5">(GMT+09:30) Darwin</option>
+                <option timeZoneId="74" gmtAdjustment="GMT+10:00" useDaylightTime="0" value="10">(GMT+10:00) Brisbane</option>
+                <option timeZoneId="75" gmtAdjustment="GMT+10:00" useDaylightTime="1" value="10">(GMT+10:00) Canberra, Melbourne, Sydney</option>
+                <option timeZoneId="76" gmtAdjustment="GMT+10:00" useDaylightTime="1" value="10">(GMT+10:00) Hobart</option>
+                <option timeZoneId="77" gmtAdjustment="GMT+10:00" useDaylightTime="0" value="10">(GMT+10:00) Guam, Port Moresby</option>
+                <option timeZoneId="78" gmtAdjustment="GMT+10:00" useDaylightTime="1" value="10">(GMT+10:00) Vladivostok</option>
+                <option timeZoneId="79" gmtAdjustment="GMT+11:00" useDaylightTime="1" value="11">(GMT+11:00) Magadan, Solomon Is., New Caledonia</option>
+                <option timeZoneId="80" gmtAdjustment="GMT+12:00" useDaylightTime="1" value="12">(GMT+12:00) Auckland, Wellington</option>
+                <option timeZoneId="81" gmtAdjustment="GMT+12:00" useDaylightTime="0" value="12">(GMT+12:00) Fiji, Kamchatka, Marshall Is.</option>
+                <option timeZoneId="82" gmtAdjustment="GMT+13:00" useDaylightTime="0" value="13">(GMT+13:00) Nuku'alofa</option>
+              </select>
+          </div>
+        </div>
+
+        <div class="pull-right">
+        <div class="col-md-12">
+        <div class="buttons col-md-6">
+            <!-- buttons to submit / cancel form -->
+            <span>
+              <button type="submit" class=" cancelBtn scbuttonW btn btn-md cebBTN2nd">
+                Cancel
+              </button>
+            </span>
+          </div>
+
+        <div class="buttons col-md-6" style="">
+            <!-- buttons to submit / cancel form -->
+            <span>
+              <button type="submit" class="saveBtn scbuttonW btn btn-md cebBTN">
+                Save
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <br>
+
+
+
+
+        </div>
+
+
+
+        <div class="col-md-6">
+          <h4 style="color:#2BC4B6;">Company</h4>
+
+          <div class="form-group col-md-12 removePadding">
+              <span id="lblCmp">{{invoice.Company}}</span>
+              <div id="Cmp">
+                <label>Company:</label>
+                <input class="form-control" value="{{invoice.Company}}" type="text" name="comment">
+              </div>
+          </div>
+
+          <div class="form-group col-md-12 removePadding">
+              <span id="lblCmpAddr">{{invoice.CompanyAddress}}</span>
+              <div id="CmpAddr">
+                <label>Company Address:</label>
+                <input class="form-control" value="{{invoice.CompanyAddress}}" type="text" name="comment">
+              </div>
+
+          </div>
+        </div>
+
+        </div>
+
+        </div>
+        </div>
+
+    </div>
+</form>
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            $("input[name$='bpi']").click(function() {
+                var test = $(this).val();
+
+                $("div.bpimode").hide();
+                $("#bpi" + test).show();
+            });
+        });
+
+        function isNumberKey(evt){
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
+
+    </script>
+
+    <form name="signUpForm" ng-submit="submitUser()" action="#/invoice_review2" novalidate>
+    <div class="row">
+        <div class="col-md-12">
+        <div class="Gheader">
+            <h4 class="col-sm-10" style="text-indent:0px; line-height:0px; margin-top:15px;">2. Credit Card Information</h4>
+
+        </div>
+        <div class="col-md-12 headerContainer">
+
+            <div id="bpi1" class="bpimode">
+            <div class="form-group col-sm-2" style="padding-left:5px;padding-right:5px;">
+                    <label class="" for="email">Credit Card:</label>
+                      <!--<select class="form-control" name="pCreditCard" id="PaymentMethod" style="margin-bottom:7px;">
+                        <option value="" selected>Select Card Type</option>
+                        <option value="chasepaytechl2:AX">American Express</option>
+                        <option value="chasepaytechl2:MC">MasterCard</option>
+                        <option value="chasepaytechl2:VI">Visa</option>
+                      </select>-->
+                      <select ng-class="{ errorinput: submitted && signUpForm.CreditCard.$invalid }"  name="CreditCard" style="margin-bottom:7px;" class="form-control" data-ng-model="selectedOption" ng-options="c.name for c in CreditCards" required></select>
+                      <span class="e" ng-show="submitted && signUpForm.CreditCard.$invalid">This field is required</span>
+                  </div>
+
+            <div class="form-group col-sm-3" style="padding-left:5px;padding-right:5px;">
+                    <label for="pCreditCardNum" class="control-label">Credit Card Number:</label>
+                    <input onkeypress="return isNumberKey(event)" type="text" maxlength="16" placeholder="Credit Card Number" class="form-control" ng-class="{ errorinput: submitted && signUpForm.ccn.$invalid }" name="ccn" ng-model="invoice.CreditCardNum"  required />
+                    <span class="e" ng-show="submitted && signUpForm.ccn.$invalid">This field is required</span>
+                  </div>
+
+            <div class="form-group col-sm-3" style="padding-left:5px;padding-right:5px;">
+                <label for="pNameOnCard" class="control-label">Name on the Card:</label><br>
+                <input type="text" placeholder="Name on Card" value="John Doe" class="form-control" ng-class="{ errorinput: submitted && signUpForm.noc.$invalid }" name="noc" ng-model="invoice.CreditCardHolder" placeholder="Name on the Card" required />
+                <span class="e" ng-show="submitted && signUpForm.noc.$invalid">This field is required</span>
+            </div>
+
+            <div class="form-group col-sm-3" style="padding-left:5px;padding-right:5px;    margin-right: -45px;">
+                <label for="pMonth" class="control-label">Expiration Date (MM/YR):</label><br>
+                <div class="col-xs-4" style="margin-right:2px; padding-left:0px;">
+                <input onkeypress="return isNumberKey(event)" value="01" type="text" maxlength="2" max="12" min="01" placeholder="01" class="form-control" ng-class="{ errorinput: submitted && signUpForm.edmm.$invalid }" name="edmm" ng-model="invoice.ExpMonth" required />
+                <span class="e" ng-show="submitted && signUpForm.edmm.$invalid">This field is required</span>
+                </div>
+                <div class="col-xs-5" style="margin-right:0px; padding-left:0px; padding-right:0px;">
+                <input onkeypress="return isNumberKey(event)" value="2016" type="text" maxlength="4" min="2016" max="2050" placeholder="2016" class="form-control" ng-class="{ errorinput: submitted && signUpForm.edyr.$invalid }" name="edyr" ng-model="invoice.ExpYr" required />
+                <span class="e" ng-show="submitted && signUpForm.edyr.$invalid">This field is required</span>
+                </div>
+            </div>
+
+            <div class="form-group col-sm-1" style="padding-left:0px;padding-right:0px;">
+                <label for="pCVV" class="control-label">CVV:</label><br>
+                <input onkeypress="return isNumberKey(event)" value="1234" type="text" maxlength="4" placeholder="CVV" class="form-control" ng-class="{ errorinput: submitted && signUpForm.cvv.$invalid }" name="cvv" ng-model="invoice.CVV" required />
+                <span class="e" ng-show="submitted && signUpForm.cvv.$invalid">This field is required</span>
+            </div>
+
+        </div>
+
+        </div>
+
+
+    </div>
+    </div>
+
+
+
+    <div class="row" style="margin-top:0px;">
+        <div class="col-md-12" style="margin-top:0px;">
+        <div class="Gheader">
+            <h4 style="margin-top:0px;" for="pTerms">3. Terms of Service</h4>
+        </div>
+        <div class="col-md-12 headerContainer">
+            <div class="form-group">
+              <div class="ig">
+              <input type="checkbox" name="pTerms" id="agree_ckb" checked/><label for="agree_ckb" class="rterms">&nbsp;I have read and agreed to the <a target="_blank" href="#/terms_services">terms of service</a>.</label>
+              </div>
+            </div>
+        </div>
+    </div>
+
+        <!--<button type="submit" class="btn btn-lg cebBTN pull-right" style="margin-right:15px; margin-top:10px;">Make Payment</button>-->
+        <button type="submit" class="cebBTN btn btn-lg pull-right" style="margin-right:15px; margin-top:10px;">Make Payment</button>
+    </div>
+    <br>
+  </form>
+</div>
+</div>
+
+</div>
+</body>

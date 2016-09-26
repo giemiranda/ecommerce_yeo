@@ -1,0 +1,87 @@
+<body ng-app="stockDogApp">
+<div ng-include="'views/header.html'" class="container-fluid"></div>
+<div class="container">
+
+<div class="row">
+    <div class="col-md-12 bc">
+        <ul class="breadcrumb">
+			<li class="completed"><a href="javascript:void(0);">Search</a></li>
+			<li class="active"><a href="javascript:void(0);">Search Result</a></li>
+		</ul>
+    </div>
+</div>
+
+<div class="row" ng-controller="InvoiceListCtrl">
+    <div class="col-md-12">
+        <h4 style="color:#928D89; font-weight:500;">List of Invoice</h4>
+
+        <table class="table table-hover table-striped searchList">
+            <thead>
+                <tr>
+                    <th class="tdInv">Invoice Number</th>
+                    <th class="tdInv">Creation Date</th>
+                    <th class="tdInv">Amount/Currency</th>
+                    <th class="tdInv">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--<tr>
+                    <td><a href="#/invoice">+1-754-3010</a></td>
+                    <td><a href="#/invoice">July 27,2016</a></td>
+                    <td><a href="#/invoice">$385.00</a></td>
+                    <td><a href="#/invoice">Pending</a></td>
+                </tr>
+                <tr>
+                    <td>(541-754-3010</td>
+                    <td>August 2,2016</td>
+                    <td>$1827.00</td>
+                    <td>Paid</td>
+                </tr>
+                <tr>
+                    <td>001-654-3010</td>
+                    <td>August 14,2016</td>
+                    <td>$231.00</td>
+                    <td>Pending</td>
+                </tr>-->
+
+                <tr ng-repeat="invoice in invlist">
+                    <td><a href="#/invoice2">{{ invoice.InvoiceNumber }}</a></td>
+                    <td><a href="#/invoice2">{{ invoice.CreationDate }}</a></td>
+                    <td><a href="#/invoice2">{{ invoice.Amount }}  USD</a></td>
+                    <td><a href="#/invoice2">{{ invoice.Status }}</a></td>
+                </tr>
+
+                <tr ng-repeat="invoice in invlist2">
+                    <td><a href="#/invoicePaid">{{ invoice.InvoiceNumber }}</a></td>
+                    <td><a href="#/invoicePaid">{{ invoice.CreationDate }}</a></td>
+                    <td><a href="#/invoicePaid">{{ invoice.Amount }}  USD</a></td>
+                    <td><a href="#/invoicePaid">{{ invoice.Status }}</a></td>
+                </tr>
+
+                <tr ng-repeat="invoice in invlist3">
+                    <td><a href="#/invoiceVoid">{{ invoice.InvoiceNumber }}</a></td>
+                    <td><a href="#/invoiceVoid">{{ invoice.CreationDate }}</a></td>
+                    <td><a href="#/invoiceVoid">{{ invoice.Amount }}  USD</a></td>
+                    <td><a href="#/invoiceVoid">{{ invoice.Status }}</a></td>
+                </tr>
+                <!--<tr>
+                    <td>Invoice002</td>
+                    <td>August 2,2016</td>
+                    <td>$1827.00</td>
+                    <td>Pending</td>
+                </tr>
+                <tr>
+                    <td>Invoice003</td>
+                    <td>August 14,2016</td>
+                    <td>$231.00</td>
+                    <td>Pending</td>
+                </tr>-->
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
+
+</div>
+</body>

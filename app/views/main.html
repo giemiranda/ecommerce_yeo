@@ -1,0 +1,110 @@
+<body ng-app="stockDogApp">
+
+<div ng-include="'views/header.html'" class="container-fluid"></div>
+<div class="container">
+
+<div class="row main" ng-controller="MainCtrl">
+    <div class="col-md-2 categories removePaddingLeft removePaddingRight" style="margin-top:0px;">
+      <h5 class="titleCategory"><b>Refine By</b></h5>
+        <h5 class="titleCategory">Categories</h5>
+
+        <div style="padding-left:15px;">
+            <input type="checkbox">	<label>Analytics</label><br>
+            <input type="checkbox">	<label>Best Practice </label><br>
+            <input type="checkbox">	<label>Engagement</label><br>
+            <input type="checkbox">	<label>Leadership</label>
+        </div>
+        <hr style="margin-top:5px; margin-bottom:5px;">
+
+        <h5 class="titleCategory">Price</h5>
+
+        <div style="padding-left:15px;">
+        <input type="checkbox"> <label>0 - 500</label><br>
+        <input type="checkbox"> <label>501 - 1000</label><br>
+        <input type="checkbox"> <label>1001 - 5000</label><br>
+        <input type="checkbox"> <label>5001 - 10,000</label><br>
+        <input type="checkbox"> <label>10,001 - 20,000</label><br>
+        <input type="checkbox"> <label>20,001 - 30,000</label><br>
+        <input type="checkbox"> <label>30,001 - 40,000</label><br>
+        <input type="checkbox"> <label>40,001 - 50,000</label>
+        </div>
+
+        <hr style="margin-top:5px; margin-bottom:5px;">
+        <h5 class="titleCategory">Industries</h5>
+        <div style="padding-left:15px;">
+        <input type="checkbox"> <label>Industry 1</label><br>
+        <input type="checkbox"> <label>Industry 2</label><br>
+        <input type="checkbox"> <label>Industry 3</label><br>
+        <input type="checkbox"> <label>Industry 4</label><br>
+        <input type="checkbox"> <label>Industry 5</label>
+        </div>
+        <hr style="margin-top:5px; margin-bottom:5px;">
+        <h5 class="titleCategory">Language</h5>
+        <div style="padding-left:15px;">
+        <input type="checkbox"> <label>English</label><br>
+        <input type="checkbox"> <label>Portuguese</label><br>
+        <input type="checkbox"> <label>Spanish</label><br>
+        <input type="checkbox"> <label>Japanese</label><br>
+        <input type="checkbox"> <label>Chinese</label><br>
+        <input type="checkbox"> <label>German</label>
+        </div>
+
+    </div>
+    <div class="col-md-10 prod_list">
+        <h1 class="col-md-6 removePadding" style="margin-left:15px; margin-top:0px; font-size:18px;">All Products</h1>
+        <!--<div class="col-md-5 removePadding" style="vertical-align: middle;">
+          <div class="pull-right">
+          <span style="font-weight:normal;"><b>Sort By: </b></span>
+          <select>
+            <option value="featured-rank">Featured</option>
+            <option value="price-asc-rank">Price: Low to High</option>
+            <option value="price-desc-rank">Price: High to Low</option>
+            <option value="review-rank">Avg. Customer Review</option>
+            <option value="date-desc-rank">Newest Arrivals</option>
+          </select>
+          </div>
+        </div>-->
+        <div class="row">
+            <div class="col-md-12 removePaddingRight">
+                <div ng-repeat="products in product" class="col-md-4 prodItem">
+
+                    <center><div class="pdf-thumb-box"> <a href="#2013-Katalog">
+                            <div class="pdf-thumb-box-overlay">
+                <span class="glyphicon glyphicon-zoom-in"></span>
+            </span></div>
+                            <img class="img-responsive" src="http://placehold.it/250x120" alt="2013 Genel Katalog">
+                        </a>
+
+                    </div></center>
+                    <div class="vertical-social-box"></div>
+
+                    <div class="product-name">
+                        <span><a href="#/product_page">{{ products.Name }}</a></span>
+                    </div>
+                    <div class="product-price">
+                        <span>Price Starts at ${{ products.Price }}</span>
+                    </div>
+                    <div class="product-quantity form-group">
+                        <div class="col-xs-6"><span>Quantity:</span></div>
+                        <div class="col-xs-6 product-quantity-field">
+                          <input type="text" class="form-control" name="name" id="name">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a href="#/product_configure" class="btn btn-xs cebBTN2nd"><span class="glyphicon glyphicon-cog"></span> Configure</a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a href="#/product_cart" class="btn btn-xs cebBTN pull-right"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>

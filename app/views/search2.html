@@ -1,0 +1,52 @@
+<body ng-app="stockDogApp">
+<div ng-include="'views/header2.html'" class="container-fluid"></div>
+<div class="container">
+
+  <script>
+
+  $("#inv900").hide();
+
+  function checkIt(){
+
+  if(document.getElementById("invValue").value=="invoice001"){
+  location.href="#/invoice";
+  }else if(document.getElementById("invValue").value=="invoice002"){
+  location.href="#/invoicePaid";
+  } else if(document.getElementById("invValue").value=="invoice003"){
+  location.href="#/invoiceVoid";
+  } else if(document.getElementById("invValue").value=="invoice900"){
+  $("#inv900").show();
+  }else{
+  location.href="#/search";
+  }
+  }
+
+  </script>
+
+  <label id="inv900" style="color:#850606; font-size:16px; margin-bottom:0px;">Invoice 900 not found!</label>
+
+<div class="row">
+    <div class="Gheader">
+            <h4>Search</h4>
+        </div>
+    <div class="col-md-12 headerContainer">
+
+        <div class="form-group desc" id="search1">
+            <input id="invValue" class="textfield form-control input-md" type="text" value="" placeholder="Invoice Number">
+        </div>
+
+        <!--<div class="form-group desc" id="search2" class="desc" style="display: none;">
+            <div class="col-xs-2">
+                <input class="textfield form-control input-md" id="inputlg" type="text" placeholder="Area Code">
+            </div>
+            <div class="col-xs-10">
+                <input class="textfield form-control input-md" id="inputlg" type="text" placeholder="Phone Number"><br>
+            </div>
+        </div>-->
+        <center><a onclick="checkIt()" class="cebBTN btn btn-md">Search by Invoice Number</a>&nbsp;&nbsp;&nbsp;
+            <a href="#/invoiceList2" class="cebBTN btn btn-md" style="width:163px;">Search by Account ID</a></center>
+
+    </div>
+</div>
+</div>
+</body>

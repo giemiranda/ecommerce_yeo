@@ -1,0 +1,29 @@
+<body ng-app="stockDogApp">
+<div ng-include="'views/header.html'" class="container-fluid"></div>
+<div class="container">
+
+<div class="row">
+    <div class="Gheader">
+            <h4>Search</h4>
+        </div>
+    <div class="col-md-12 headerContainer">
+
+        <div class="form-group desc" id="search1">
+            <input class="textfield form-control input-md" id="inputlg" type="text" value="Invoice009" placeholder="Invoice Number">
+        </div>
+
+        <!--<div class="form-group desc" id="search2" class="desc" style="display: none;">
+            <div class="col-xs-2">
+                <input class="textfield form-control input-md" id="inputlg" type="text" placeholder="Area Code">
+            </div>
+            <div class="col-xs-10">
+                <input class="textfield form-control input-md" id="inputlg" type="text" placeholder="Phone Number"><br>
+            </div>
+        </div>-->
+        <center><a href="#/invoicePaid" class="cebBTN btn btn-md">Search by Invoice Number</a>&nbsp;&nbsp;&nbsp;
+            <a href="#/invoiceList" class="cebBTN btn btn-md" style="width:163px;">Search by Account ID</a></center>
+
+    </div>
+</div>
+</div>
+</body>

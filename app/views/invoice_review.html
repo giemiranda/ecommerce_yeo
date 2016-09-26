@@ -1,0 +1,315 @@
+<body ng-app="stockDogApp">
+<div ng-include="'views/header.html'" class="container-fluid"></div>
+<div class="container">
+
+<style>
+.errorinput {
+  color: #850000;
+  background: rgba(254, 186, 186, 0.5);
+  border: 1px solid #850000;
+}
+</style>
+
+<div class="row">
+    <div class="col-md-10 bc">
+        <ul class="breadcrumb">
+			<li class="completed"><a href="javascript:void(0);">Search</a></li>
+			<li class="completed"><a href="javascript:void(0);">Invoice</a></li>
+			<li class="active"><a href="javascript:void(0);">Payment</a></li>
+		</ul>
+    </div>
+    <div class="col-md-2 pull-right">
+    </div>
+</div>
+<div class="row">
+    <a class="pull-right" data-toggle="tooltip" title="Lorem Ipsum Sit Et Dolor.">Need Assistance?</a>
+    <br>
+
+    <script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+    </script>
+
+    <div class="Gheader">
+        <h4>Invoice Summary</h4>
+    </div>
+    <div class="headerContainer" style="padding-bottom:0px !important;">
+        <div class="row order_summaryT">
+            <div class="com-md-12">
+                <table class="table table-responsive" border="0" style="border:0;">
+                    <tbody>
+                      <tr class="heading">
+                          <td class="tdInv">
+                              Product Item
+                          </td>
+
+                          <td class="tdInv">
+                              Unit Price
+                          </td>
+
+                          <td class="tdInv">
+                            Quantity
+                          </td>
+
+                          <td class="tdInv" style="text-align:right; width:25%;">
+                              Total
+                          </td>
+                      </tr>
+
+                      <tr class="item">
+                          <td>
+                              {{invoice.Item1}}
+                          </td>
+
+                          <td>
+                              <label ng-model="itempr1" style="color:#850606;">${{invoice.Item1Price}}</label>
+                          </td>
+
+                          <td>
+                              {{invoice.Quantity}}
+                          </td>
+
+                          <td style="text-align:right;">
+                              <label ng-model="itempr1" style="color:#850606;">${{invoice.Item1Price}}</label>
+                          </td>
+                      </tr>
+
+                      <tr class="item">
+                          <td>
+                              {{invoice.Item2}}
+                          </td>
+
+                          <td>
+                              <label ng-model="itempr2" style="color:#850606;">${{invoice.Item2Price}}</label>
+                          </td>
+
+                          <td>
+                              {{invoice.Quantity}}
+                          </td>
+
+                          <td style="text-align:right;">
+                              <label ng-model="itempr2" style="color:#850606;">${{invoice.Item2Price}}</label>
+                          </td>
+                      </tr>
+
+                      <tr class="total">
+                          <td></td>
+                          <td></td>
+                          <td></td>
+
+                          <td style="text-align:right; padding-top:2px; padding-bottom:2px;">
+                             <label class="control-label" style="font-size:15px;font-weight:bold;">Sub Total:<span style="color:#850606;"> $NaN</span></label>
+                          </td>
+                      </tr>
+
+                      <tr class="total">
+                          <td style="border-top:0px;"></td>
+                          <td style="border-top:0px;"></td>
+                          <td style="border-top:0px;"></td>
+
+                          <td style="text-align:right; padding-top:2px; padding-bottom:2px;">
+                             <label class="control-label" style="font-size:15px;font-weight:bold;">Estimated Tax:<span style="color:#850606;"> $NaN</span></label>
+                          </td>
+                      </tr>
+
+                      <tr class="total">
+                          <td style="border-top:0px;"></td>
+                          <td style="border-top:0px;"></td>
+                          <td style="border-top:0px;"></td>
+
+                          <td style="text-align:right; padding-top:2px; padding-bottom:2px;">
+                             <label class="control-label" style="font-size:15px;font-weight:bold;">Promotional Discount:<span style="color:#850606;"> $NaN</span></label>
+                          </td>
+                      </tr>
+
+                      <tr class="total">
+                          <td style="border-top:0px;"></td>
+                          <td style="border-top:0px;"></td>
+                          <td style="border-top:0px;"></td>
+
+                          <td style="text-align:right; padding-top:2px; padding-bottom:2px;">
+                             <label class="control-label" style="font-size:15px;font-weight:bold;">Total: <span style="color:#850606;">${{invoice.Item1Price + invoice.Item2Price}}</span></label>
+                          </td>
+                      </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+<div ng-controller="populated_data" style="margin-top:-18px;">
+<form editable-form name="editableForm" onaftersave="saveUser()">
+    <div class="Gheader">
+            <h4 class="col-sm-10" style="text-indent:0px; line-height:0px; margin-top:15px;">1. Billing Information</h4>
+        </div>
+    <div class="headerContainer">
+        <div class="row">
+        <div class="col-md-12">
+        <div class="row">
+
+          <div class="col-md-6" style="border-right:1px solid #e4e4e4; padding-right:0px !important;">
+            <h4 class="col-md-9">Personal Information</h4>
+            <div class="col-md-3" style="line-height:35px;">
+              <!--<a ng-click="editableForm.$show()" ng-show="!editableForm.$visible"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>-->
+            </div>
+
+            <div class="col-md-6" style="padding-left:0px;">
+            <div style="margin-bottom:0px !important;" class="form-group col-md-12">
+                <span editable-text="invoice.Name" e-label="First Name" onbeforesave="validateTField($data)">{{invoice.FirstName}} {{invoice.LastName}}</span>
+            </div>
+
+            <div style="margin-bottom:0px !important;" class="form-group col-md-12">
+                <span editable-text="invoice.Street" e-label="Street" onbeforesave="validateTField($data)">{{invoice.Street}}</span>
+            </div>
+
+            <div class="form-group col-md-12">
+                <span editable-text="invoice.City" e-label="City" onbeforesave="validateTField($data)">{{invoice.City}}</span>
+                <span editable-text="invoice.StateProv" e-label="State" onbeforesave="validateTField($data)">{{invoice.StateProv}}</span>
+                <span editable-text="invoice.ZipPostal" e-label="Zip Code" onbeforesave="validateTField($data)">{{invoice.ZipPostal}}</span>
+            </div>
+
+            </div>
+
+            <div class="col-md-6" style="padding-left:0px;">
+            <div style="margin-bottom:0px !important;" class="form-group col-md-12">
+                <span editable-text="invoice.Email" e-label="Email" onbeforesave="validateTField($data)">{{invoice.Email}}</span>
+            </div>
+
+            <div style="margin-bottom:0px !important;" class="form-group col-md-12">
+                <label for="Ph" class="control-label" style="margin-bottom:0px !important;">Ph:</label>
+                <span editable-text="invoice.PhoneNum" e-name="Ph" onbeforesave="validateTField($data)">{{invoice.PhoneNum}}</span>
+            </div>
+
+            <div class="form-group col-md-12">
+                <label for="Ph" class="control-label" style="margin-bottom:0px !important;">Mobile:</label>
+                <span editable-text="invoice.MobileNum" e-name="Mobile" onbeforesave="validateTField($data)">{{invoice.MobileNum}}</span>
+            </div>
+
+            </div>
+
+            <div class="col-md-12 removePadding">
+              <div style="margin-bottom:0px !important;" class="form-group col-md-12">
+                  <span editable-text="invoice.Country" e-label="Country" onbeforesave="validateTField($data)">{{invoice.Country}}</span>
+              </div>
+
+              <div class="form-group col-md-12">
+                  <span editable-text="invoice.Timezone" e-label="Timezone" onbeforesave="validateTField($data)">{{invoice.Timezone}}</span>
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+        <div class="col-md-6">
+          <h4>Company Information</h4>
+
+          <div class="form-group col-md-12 removePadding">
+              <span>{{invoice.Company}}</span>
+          </div>
+
+          <div class="form-group col-md-12 removePadding">
+
+              <span>{{invoice.CompanyAddress}}</span>
+
+          </div>
+        </div>
+
+        </div>
+
+        </div>
+        </div>
+
+    </div>
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            $("input[name$='bpi']").click(function() {
+                var test = $(this).val();
+
+                $("div.bpimode").hide();
+                $("#bpi" + test).show();
+            });
+        });
+
+        function isNumberKey(evt){
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
+
+    </script>
+
+    <form name="signUpForm" ng-submit="submitUser()" action="#/thankyou" novalidate>
+    <div class="row">
+        <div class="col-md-12">
+        <div class="Gheader">
+            <h4 class="col-sm-10" style="text-indent:0px; line-height:0px; margin-top:15px;">2. Credit Card Information</h4>
+
+        </div>
+        <div class="col-md-12 headerContainer">
+
+            <div id="bpi1" class="bpimode">
+            <div class="form-group col-sm-2" style="padding-left:5px;padding-right:5px;">
+              <label class="control-label">Credit Card:</label>
+              <label class="control-label cc2">{{invoice.CreditCard}}</label>
+            </div>
+
+            <div class="form-group col-sm-3" style="padding-left:5px;padding-right:5px;">
+              <label class="control-label">Credit Card Number:</label>
+              <label class="control-label cc2">{{invoice.CreditCardNumx}}</label>
+            </div>
+
+            <div class="form-group col-sm-3" style="padding-left:5px;padding-right:5px;">
+              <label class="control-label">Name on the Card:</label><br>
+              <label class="control-label cc2">{{invoice.CreditCardHolder}}</label>
+            </div>
+
+            <div class="form-group col-sm-3" style="padding-left:5px;padding-right:5px;    margin-right: -45px;">
+              <label class="control-label">Expiration Date (MM/YR):</label><br>
+                <label class="control-label cc2">{{invoice.ExpMonth}} - {{invoice.ExpYr}}</label>
+              </div>
+
+            <div class="form-group col-sm-1" style="padding-left:0px;padding-right:0px;">
+              <label class="control-label">CVV:</label><br>
+              <label class="control-label cc2">xxxx</label>
+            </div>
+
+        </div>
+
+        </div>
+
+
+    </div>
+    </div>
+
+
+
+    <div class="row" style="margin-top:0px;">
+        <div class="col-md-12" style="margin-top:0px;">
+        <div class="Gheader">
+            <h4 style="margin-top:0px;" for="pTerms">3. Terms of Service</h4>
+        </div>
+        <div class="col-md-12 headerContainer">
+            <div class="form-group">
+              <div class="ig">
+              <label for="agree_ckb">&nbsp;You have read and agreed to the <a target="_blank" href="#/terms_services">terms of service</a>.</label>
+              </div>
+            </div>
+        </div>
+    </div>
+
+        <!--<button type="submit" class="btn btn-lg cebBTN pull-right" style="margin-right:15px; margin-top:10px;">Make Payment</button>-->
+        <button type="submit" class="cebBTN btn btn-lg pull-right" style="margin-right:15px; margin-top:10px;">Make Payment</button>
+    </div>
+    <br>
+  </form>
+</div>
+</div>
+
+</div>
+</body>

@@ -1,0 +1,332 @@
+<body ng-app="stockDogApp">
+<div ng-include="'views/header.html'" class="container-fluid"></div>
+<div class="container">
+
+<style>
+.editable-wrap .editable-controls > input, .editable-wrap .editable-controls > select, .editable-wrap .editable-controls > textarea{
+  margin-bottom: 7px;
+}
+</style>
+
+<div class="row">
+<form editable-form name="editableForm" onaftersave="saveUser()">
+    <div class="Gheader">
+        <h4 style="margin-top:0px; text-indent:0px !important;" class="col-md-11">Billing</h4>
+        <center><a ng-click="editableForm.$show()" ng-show="!editableForm.$visible" class="col-sm-1 pull-right" style="color:white; line-height:35px; padding-right:0px;">Edit</a></center>
+    </div>
+    <div class="headerContainer">
+        <div class="row" ng-controller="populated_data">
+        <div class="col-md-12">
+
+
+                      <div class="form-group col-sm-4 removePadding">
+                        <label for="fname" class="control-label">Billing Name:</label><br>
+                          <span editable-text="invoice.Name" e-name="name" onbeforesave="validateTField($data)">{{invoice.Name}}</span>
+                      </div>
+
+                      <div class="form-group col-sm-8">
+                        <label for="fname" class="control-label">Billing Address:</label><br>
+                        <div class="col-md-12 removePadding"><span editable-text="invoice.Street" onbeforesave="validateTField($data)">{{invoice.Street}},</span>
+                        <span editable-text="invoice.City" onbeforesave="validateTField($data)">{{invoice.City}},</span>
+                        <span editable-text="invoice.StateProv" onbeforesave="validateTField($data)">{{invoice.StateProv}},</span>
+                        <span editable-text="invoice.ZipPostal" onbeforesave="validateTField($data)">{{invoice.ZipPostal}},</span>
+                        <span editable-text="invoice.Country" onbeforesave="validateTField($data)">{{invoice.Country}}</span>
+                        </div>
+                      </div>
+
+
+                      <div class="buttons pull-right" style="margin-right:15px;">
+                            <!-- buttons to submit / cancel form -->
+                            <span ng-show="editableForm.$visible">
+                              <button type="button" class="scbuttonW btn cebBTN" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+                                Cancel
+                              </button>&nbsp;&nbsp;
+                              <button type="submit" class="scbuttonW btn cebBTN" ng-disabled="editableForm.$waiting">
+                                Save
+                              </button>
+                            </span>
+                          </div>
+
+                        <script>
+                            function toggler(divId) {
+                                $("#" + divId).toggle();
+                            }
+
+                             $(document).ready(function () {
+
+                                $('#addBAdForm').validate({ // initialize the plugin
+                                    rules: {
+                                        addBAd: {
+                                            required: true,
+                                        }
+                                    },
+
+                                    highlight: function(element) {
+                                        $(element).closest('.form-group').addClass('has-error');
+                                    },
+                                    unhighlight: function(element) {
+                                        $(element).closest('.form-group').removeClass('has-error');
+                                    },
+                                    errorElement: 'span',
+                                    errorClass: 'help-block',
+                                    errorPlacement: function(error, element) {
+                                        if(element.parent('.input-group').length) {
+                                            error.insertAfter(element.parent());
+                                        } else {
+                                     error.insertAfter(element.parent());
+                                        }
+                                    },
+
+                                    submitHandler: function (form) { // for demo
+                                        alert('valid form submitted'); // for demo
+                                        $('#editForm').hide;
+                                        return false; // for demo
+                                    }
+                                });
+
+                            });
+
+                        </script>
+
+
+        </div>
+
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            $("input[name$='bpi']").click(function() {
+                var test = $(this).val();
+
+                $("div.bpimode").hide();
+                $("#bpi" + test).show();
+            });
+        });
+
+    </script>
+
+    <div class="Gheader">
+        <h4  style="margin-top:0px;">Billing &amp; Payment Information</h4>
+    </div>
+    <div class="headerContainer">
+        <div class="row">
+            <div class="col-sm-12">
+                <input type="radio" name="bpi" checked="checked" value="2" style="width:20px !important;"/>&nbsp;Credit Card&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="bpi" value="1" style="width:20px !important;"/>&nbsp;Pay By Invoice &nbsp;&nbsp;&nbsp;
+                <input type="radio" name="bpi" value="3" style="width:20px !important;"/>&nbsp;Bank Transfer &nbsp;&nbsp;&nbsp;
+                <input type="radio" name="bpi" value="4" style="width:20px !important;"/>&nbsp;Subscription &nbsp;&nbsp;&nbsp;
+                <br><br>
+
+                <div id="bpi2" class="bpimode">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label><b>Accepted Credit Cards:</b></label> <img src="../images/ccards.png" class="img-responsive" width="20%"/><br>
+                        </div>
+
+                    <form id="addCreditCardForm">
+                      <div class="form-group col-sm-2" style="padding-left:15px;padding-right:5px;">
+                              <label class="" for="email">Credit Card:</label>
+                                <select class="form-control" name="pCreditCard" id="PaymentMethod" style="margin-bottom:7px;">
+                                  <option value="" selected>Select Card Type</option>
+                                  <option value="chasepaytechl2:AX">American Express</option>
+                                  <option value="chasepaytechl2:MC">MasterCard</option>
+                                  <option value="chasepaytechl2:VI">Visa</option>
+                                  </select>
+                            </div>
+
+                      <div class="form-group col-sm-3" style="padding-left:5px;padding-right:5px;">
+                              <label for="email" class="control-label">Credit Card Number:</label>
+                              <input text="text" maxlength="16" placeholder="Credit Card Number" class="form-control">
+                            </div>
+
+                      <div class="form-group col-sm-3" style="padding-left:5px;padding-right:5px;">
+                          <label for="email" class="control-label">Name on Card:</label><br>
+                          <input text="text" placeholder="Name on Card" class="form-control">
+                      </div>
+
+                      <div class="form-group col-sm-3" style="padding-left:5px;padding-right:5px;    margin-right: -45px;">
+                          <label for="email" class="control-label">Expiration Date (MM/YR):</label><br>
+                          <div class="col-xs-4" style="margin-right:2px; padding-left:0px;">
+                          <input class=" form-control" type="Number" maxlength="2" max="12" min="01" value="01">
+                          </div>
+                          <div class="col-xs-5" style="margin-right:0px; padding-left:0px; padding-right:0px;">
+                          <input class="form-control" type="Number" maxlength="4" min="2016" max="2050" value="2016">
+                          </div>
+                      </div>
+
+                      <div class="form-group col-sm-1" style="padding-left:0px;padding-right:0px;">
+                          <label for="email" class="control-label">CVV:</label><br>
+                          <input text="text" placeholder="CVV" class="form-control">
+                      </div>
+                    </form>
+
+                    <script>
+                     $(document).ready(function () {
+
+                            $('#addCreditCardForm').validate({ // initialize the plugin
+                                rules: {
+                                    cCreditCard: {
+                                        required: true
+                                    },
+                                    cCardHolderName: {
+                                        required: true,
+                                    },
+                                    cCCV: {
+                                        required: true,
+                                    },
+                                    cCreditCardNum: {
+                                        required: true,
+                                    }
+                                },
+
+                                highlight: function(element) {
+                                    $(element).closest('.form-group').addClass('has-error');
+                                },
+                                unhighlight: function(element) {
+                                    $(element).closest('.form-group').removeClass('has-error');
+                                },
+                                errorElement: 'span',
+                                errorClass: 'help-block',
+                                errorPlacement: function(error, element) {
+                                    if(element.parent('.input-group').length) {
+                                        error.insertAfter(element.parent());
+                                    } else {
+                                 error.insertAfter(element.parent());
+                                    }
+                                },
+
+                                submitHandler: function (form) { // for demo
+                                    alert('valid form submitted'); // for demo
+                                    $('#addCreditCardForm').hide;
+                                    return false; // for demo
+                                }
+                            });
+
+                        });
+                        </script>
+
+                    </div>
+                </div>
+
+
+                <div id="bpi1" class="bpimode" style="display: none;">
+                    <div class="form-horizontal">
+                          <div class="form-group">
+                            <label class="control-label col-sm-3" for="email">Purchase Order Number:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" placeholder="Purchase Order Number">
+                            </div>
+                          </div>
+                    </div>
+                </div>
+
+                <div id="bpi3" class="bpimode" style="display: none;">
+                    <div class="form-horizontal">
+                          <div class="form-group">
+                            <label class="control-label col-sm-3" for="email">Bank:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" placeholder="Bank">
+                            </div>
+                          </div>
+                    </div>
+                </div>
+
+                <div id="bpi4" class="bpimode" style="display: none;">
+                    <div class="form-horizontal">
+                          <div class="form-group">
+                            <label class="control-label col-sm-3" for="email">Subscription:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" placeholder="Subscription">
+                            </div>
+                          </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="Gheader">
+        <h4 style="margin-top:0px;">Order Summary</h4>
+    </div>
+    <div class="headerContainer">
+        <div class="row order_summaryT">
+            <div class="com-md-12">
+                <table class="table table-responsive" border="1">
+                    <thead>
+                        <tr>
+                            <th class="fw400">Product Name</th>
+                            <th class="fw400">Unit Price</th>
+                            <th class="fw400">QTY</th>
+                            <th class="fw400">Total Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>SES Challenger Solution</td>
+                            <td>$0.00</td>
+                            <td>1</td>
+                            <td>$0.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 promocode">
+                  <div class="form-group">
+                    <div class="col-sm-5">
+                      <h3>Promo Code:</h3>
+                    </div>
+                    <h3 class="col-sm-6" style="color:#00aeef;">CEBSTART</h3>
+                  </div>
+                  <div class="col-md-12">
+                    <h6><a href="">View Terms and Conditions</a></h6>
+                  </div>
+                  <div class="col-md-12">
+                    <p style="font-size:12px;">*Please note: Buyer shall bear all applicable federal, state, municipal and other government taxes (such as sales, use and similar taxes), as well as import or customs duties, license fees and any other similar charges, however designated or levied on the sale or delivery of the products or measured by the purchase price paid for the products. The prices set forth on the invoice do not include such taxes, fees and charges. Exemption certificates must be presented prior to shipment if they are to be honored.</p>
+                  </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group pc_label">
+                    <div class="col-sm-8">
+                        <label class="control-label">SUB TOTAL:</label>
+                    </div>
+                    <label class="control-label col-sm-4">$NaN</label>
+
+                    <div class="col-sm-8">
+                        <label class="control-label">ESTIMATED TAX*:</label>
+                    </div>
+                    <label class="control-label col-sm-4">$0.00</label>
+
+                    <div class="col-sm-8">
+                        <label class="control-label">PROMOTIONAL DISCOUNT:</label>
+                    </div>
+                    <label class="control-label col-sm-4">$0.00</label>
+
+                    <div class="col-sm-8">
+                        <label class="control-label"><h3>TOTAL:</h3></label>
+                    </div>
+                    <label class="control-label col-sm-4"><h3>$NaN</h3></label>
+
+
+                    <div class="col-sm-12">
+                        <center></center>
+
+                        <a href="#order_confirmation"><button class="btn btn-lg cebBTN pull-right">Place Order</button></a>
+                    </div>
+
+                </div>
+            </div>
+    </div>
+
+</div>
+</div>
+</body>

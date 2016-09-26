@@ -1,0 +1,201 @@
+<body ng-app="stockDogApp">
+<div ng-include="'views/header5.html'" class="container-fluid"></div>
+<div class="container">
+
+<script>
+$(".myBox").click(function() {
+window.location = $(this).find("a").attr("href");
+return false;
+});
+</script>
+
+<style>
+.hero {
+    position: absolute;
+    top: 0%;
+    left: 3%;
+    z-index: 3;
+    color: #fff;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 350px;
+    z-index: 2;
+    background-color: #080d15;
+    opacity: .4;
+}
+
+.fade-carousel .slides .slide-1,
+.fade-carousel .slides .slide-2,
+.fade-carousel .slides .slide-3 {
+  height: 350px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.fade-carousel .slides .slide-1 {
+  background-image: url('images/crsl1.jpg');
+}
+.fade-carousel .slides .slide-2 {
+  background-image: url('images/crsl2.jpg');
+}
+.fade-carousel .slides .slide-3 {
+  background-image: url('images/crsl3.jpg');
+}
+</style>
+
+<div class="row" style="margin-top:10px;">
+  <div class="col-md-12 removePadding">
+    <!--<div style="height:300px; width:100%; background:url('images/storeh.jpg') no-repeat;">
+      <div class="col-md-10" >
+      <h1 style="display:inline-block; color:#f8f8f8; font-weight:900 !important; border-bottom:15px solid #f8f8f8; padding-bottom:5px;" >Lorem Ipsum Sit Et Dolor</h1>
+      <h4 style="color:#f8f8f8;" class="fw400">Sed in erat blandit, blandit ligula quis, feugiat lacus.</h4>
+      <br>
+      <p class="col-md-6 removePadding" style="color:#f8f8f8;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in erat blandit, blandit ligula quis, feugiat lacus.
+        <br><br><button class="btn btn-lg cebBTN_secondary" style="border-radius:0px !important;">Read More</button>
+      </p>
+      </div>
+
+    </div>-->
+
+    <div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel" style="height:350px;">
+      <!-- Overlay -->
+
+      <!-- Indicators -->
+      <ol class="carousel-indicators pull-left" style="left:5%;">
+        <li data-target="#bs-carousel" data-slide-to="0" class="active" style="border-radius:0px !important;"></li>
+        <li data-target="#bs-carousel" data-slide-to="1" style="border-radius:0px !important;"></li>
+        <li data-target="#bs-carousel" data-slide-to="2" style="border-radius:0px !important;"></li>
+      </ol>
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+        <div class="item slides active" >
+          <div class="slide-1">
+              <div class="overlay"></div>
+          </div>
+          <div class="hero">
+            <hgroup>
+                <h1 style="color:#f8f8f8;">Lorem Ipsum</h1>
+                <h3 style="color:#f8f8f8;">Sed in erat blandit, blandit ligula quis, feugiat lacus.</h3>
+                <p style="color:#f8f8f8;" class="col-md-5 removePaddingLeft fw400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in erat blandit, blandit ligula quis, feugiat lacus. Sed scelerisque lectus sit amet purus faucibus, eget dictum nunc aliquet.
+                  <br><br><button style="border-radius:0px !important;" class="btn btn-hero btn-lg cebBTN" role="button">See all features</button>
+                </p>
+            </hgroup>
+          </div>
+        </div>
+        <div class="item slides">
+          <div class="slide-2">
+              <div class="overlay"></div>
+          </div>
+          <div class="hero">
+            <hgroup>
+                <h1 style="color:#f8f8f8;">Lorem Ipsum</h1>
+                <h3 style="color:#f8f8f8;">Sed in erat blandit, blandit ligula quis, feugiat lacus.</h3>
+                <p style="color:#f8f8f8;" class="col-md-5 removePaddingLeft fw400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in erat blandit, blandit ligula quis, feugiat lacus. Sed scelerisque lectus sit amet purus faucibus, eget dictum nunc aliquet.
+                  <br><br><button style="border-radius:0px !important;" class="btn btn-hero btn-lg cebBTN" role="button">See all features</button>
+                </p>
+            </hgroup>
+          </div>
+        </div>
+        <div class="item slides">
+          <div class="slide-3">
+              <div class="overlay"></div>
+          </div>
+          <div class="hero">
+            <hgroup>
+                <h1 style="color:#f8f8f8;">Lorem Ipsum</h1>
+                <h3 style="color:#f8f8f8;">Sed in erat blandit, blandit ligula quis, feugiat lacus.</h3>
+                <p style="color:#f8f8f8;" class="col-md-5 removePaddingLeft fw400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in erat blandit, blandit ligula quis, feugiat lacus. Sed scelerisque lectus sit amet purus faucibus, eget dictum nunc aliquet.
+                  <br><br><button style="border-radius:0px !important;" class="btn btn-hero btn-lg cebBTN" role="button">See all features</button>
+                </p>
+            </hgroup>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-12 removePadding">
+    <div class="hotItems" style="padding-left:15px;">
+      <h3 style="display:inline-block; color:#f8f8f8; font-weight:700 !important; border-bottom:10px solid #f8f8f8; padding-bottom:5px; margin-top:10px;">Best Selling Products</h3>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="myBox3 col-md-4 removePaddingLeft">
+    <div class=" ">
+      <img src="images/sthh1.jpg"/>
+      <a href="#/main"><h3 style="margin-top:5px; margin-bottom:2px;">Product 1</h3></a>
+      <p style="color:#585250;" class="col-md-12 removePaddingLeft fw400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in erat blandit, blandit ligula quis, feugiat lacus. Sed scelerisque lectus sit amet purus faucibus, eget dictum nunc aliquet.</p>
+    </div>
+  </div>
+
+  <div class="myBox3 col-md-4">
+    <div class="">
+      <img src="images/sthh2.jpg"/>
+      <a href="#/main"><h3 style="margin-top:5px; margin-bottom:2px;">Product 2</h3></a>
+      <p style="color:#585250;" class="col-md-12 removePaddingLeft fw400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in erat blandit, blandit ligula quis, feugiat lacus. Sed scelerisque lectus sit amet purus faucibus, eget dictum nunc aliquet.</p>
+    </div>
+  </div>
+
+  <div class="myBox3 col-md-4 removePaddingRight" style="margin-left:0px;">
+    <div class="">
+      <img src="images/sthh3.jpg"/>
+      <a href="#/main"><h3 style="margin-top:5px; margin-bottom:2px;">Product 3</h3></a>
+      <p style="color:#585250;" class="col-md-12 removePaddingLeft fw400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in erat blandit, blandit ligula quis, feugiat lacus. Sed scelerisque lectus sit amet purus faucibus, eget dictum nunc aliquet.</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-12 removePadding">
+    <div class="hotItems" style="padding-left:15px;">
+      <h3 style="display:inline-block; color:#f8f8f8; font-weight:700 !important; border-bottom:10px solid #f8f8f8; padding-bottom:5px; margin-top:10px;">Lorem Ipsum</h3>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-md-12 removePadding">
+    <div style="height:250px; width:100%; background:url('images/storeh.jpg') no-repeat;">
+      <div class="col-md-5" style="background-color:rgba(147,188,68,0.4); height:100%;">
+      <h1 style="display:inline-block; color:#f8f8f8; font-weight:900 !important; border-bottom:15px solid #f8f8f8; padding-bottom:5px;" >Lorem Ipsum Sit Et Dolor</h1>
+      <h4 style="color:#f8f8f8;" class="fw400">Sed in erat blandit, blandit ligula quis, feugiat lacus.</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 removePaddingLeft">
+    <h3>Product 12</h3>
+    <p style="color:#585250; text-align:justify;" class="col-md-12 removePaddingLeft fw400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in erat blandit, blandit ligula quis, feugiat lacus. Sed scelerisque lectus sit amet purus faucibus, eget dictum nunc aliquet.</p>
+    <a href="">Lear more...</a>
+  </div>
+
+  <div class="col-md-4 removePaddingLeft">
+    <h3>Product 13</h3>
+    <p style="color:#585250; text-align:justify;" class="col-md-12 removePaddingLeft fw400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in erat blandit, blandit ligula quis, feugiat lacus. Sed scelerisque lectus sit amet purus faucibus, eget dictum nunc aliquet.</p>
+    <a href="">Lear more...</a>
+  </div>
+
+  <div class="col-md-4 removePaddingLeft">
+    <h3>Product 14</h3>
+    <p style="color:#585250; text-align:justify;" class="col-md-12 removePaddingLeft fw400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in erat blandit, blandit ligula quis, feugiat lacus. Sed scelerisque lectus sit amet purus faucibus, eget dictum nunc aliquet.</p>
+    <a class="" href="">Lear more...</a>
+  </div>
+</div>
+
+
+
+</div>
+</body>

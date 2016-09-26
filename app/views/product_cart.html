@@ -1,0 +1,182 @@
+<body ng-app="stockDogApp">
+<div ng-include="'views/header.html'" class="container-fluid"></div>
+<div class="container">
+
+<style>
+.rightClearfix{
+  margin-right:5px !important;
+}
+</style>
+
+<script>
+$(".input-number").keydown(function (e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
+             // Allow: Ctrl+A
+            (e.keyCode == 65 && e.ctrlKey === true) ||
+             // Allow: home, end, left, right
+            (e.keyCode >= 35 && e.keyCode <= 39)) {
+                 // let it happen, don't do anything
+                 return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+    });
+</script>
+
+<div class="container-fluid">
+<div class="row product_cart_main" ng-controller="productCartCtrl">
+    <div class="col-md-12">
+        <h1 style="margin-top:0px;">Shopping Cart</h1>
+        <hr class="hrLess">
+
+        <table class="table table-responsive table-striped removeMarginBottom pcart">
+            <thead>
+                <tr>
+                    <th class="pcart_th1">&nbsp;</th>
+                    <th class="fw400 pcart_th2">Product Name</th>
+                    <th class="pcart_th3">&nbsp;</th>
+                    <th class="fw400 pcart_th txtRight">Quantity</th>
+                    <th class="fw400 pcart_th txtRight">Unit Price</th>
+                    <th class="fw400 pcart_th txtRight">Net Price</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr ng-repeat="products in prodCart">
+                    <td class="product_cart_img" ><img ng-src="{{ products.Image }}"></td>
+                    <td><p><a href="#">{{ products.ProdName }}</a></p>
+                        <span>Rating</span>
+                    </td>
+                    <td></td>
+                    <td class="product_cart_quan">
+                      <button class="btn btn-xs product_cart_remove pull-left" style="margin-top:1px;">X</button>
+                        <div class="input-group pull-right">
+                          <input type="number" class="form-control" max-length="3" max="999" min="1" placeholder="0">
+                      </div>
+                    </td>
+                    <td class="product_cart_price pcart_price txtRight">${{ products.NetPrice }}</td>
+                    <td class="product_cart_price pcart_price txtRight">${{ products.NetPrice }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-responsive">
+          <tr>
+              <td class="form-inline removePaddingBottom"><input type="text" class="promocodeFld form-control" placeholder="Promo Code">&nbsp;&nbsp;&nbsp;<button class="cebBTN2nd btn btn-lg" style="pull-right">Apply</button></td>
+              <td colspan="2"><div class="pull-right"><a href="#/payment_checkout" class="cebBTN btn btn-lg">Proceed to Checkout</a></div></td>
+              <td colspan="2" style="width:33%;">
+                <div class="pull-right">
+                <h4 class="pcart_total">Total:</h4>
+                <h4 class="pcart_total">$11,250.00</h4>
+              </div><br>
+                <div class="pull-right">
+                  <input type="checkbox" name="pTerms" id="agree_ckb" checked/><label for="agree_ckb" class="rterms fw400" style="color:#959494; margin-top:5px;">&nbsp;I have read and agreed to the&nbsp;<a target="_blank" href="#/terms_services">terms of service</a></label>
+                </div>
+              </td>
+          </tr>
+        </table>
+
+    </div>
+</div>
+
+<div class="row product_cart_int">
+    <div class="col-md-12 pcart_mtop">
+        <div class="product_cart_header"  style="background-color:#8A8A8C !important;">
+            <label class="pcart_label_otherprod">Other product you may be interested</label>
+        </div>
+
+        <div class="row product-page-consider-prods">
+            <div class="col-md-3 product-page-prodItem rightClearfix">
+                <div class="pdf-thumb-box"> <a href="#2013-Katalog">
+                            <div class="pdf-thumb-box-overlay">
+                            <span class="glyphicon glyphicon-zoom-in"></span>
+                        </span></div>
+                            <center><img class="img-responsive" src="http://placehold.it/180x100" alt="2013 Genel Katalog"></center>
+                        </a>
+
+                    </div>
+                    <div class="vertical-social-box"></div>
+
+                    <div class="product-name">
+                        <span style="color:#337ab7;">CEB Enterprise Leadership</span>
+                    </div>
+                    <div class="product-price" style="margin-bottom:3px;">
+                        <span>Price Starts at $0.00</span>
+                    </div>
+                    <center><button class="btn btn-md cebBTN"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</button></center>
+            </div>
+
+            <div class="col-md-3 product-page-prodItem rightClearfix">
+                <div class="pdf-thumb-box"> <a href="#2013-Katalog">
+                            <div class="pdf-thumb-box-overlay">
+                            <span class="glyphicon glyphicon-zoom-in"></span>
+                        </span></div>
+                            <center><img class="img-responsive" src="http://placehold.it/180x100" alt="2013 Genel Katalog"></center>
+                        </a>
+
+                    </div>
+                    <div class="vertical-social-box"></div>
+
+                    <div class="product-name">
+                        <span style="color:#337ab7;">CEB Enterprise Leadership</span>
+                    </div>
+                    <div class="product-price" style="margin-bottom:3px;">
+                        <span>Price Starts at $0.00</span>
+                    </div>
+                    <center><button class="btn btn-md cebBTN"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</button></center>
+            </div>
+
+            <div class="col-md-3 product-page-prodItem rightClearfix">
+                <div class="pdf-thumb-box"> <a href="#2013-Katalog">
+                            <div class="pdf-thumb-box-overlay">
+                            <span class="glyphicon glyphicon-zoom-in"></span>
+                        </span></div>
+                            <center><img class="img-responsive" src="http://placehold.it/180x100" alt="2013 Genel Katalog"></center>
+                        </a>
+
+                    </div>
+                    <div class="vertical-social-box"></div>
+
+                    <div class="product-name">
+                        <span style="color:#337ab7;">CEB Enterprise Leadership</span>
+                    </div>
+                    <div class="product-price" style="margin-bottom:3px;">
+                        <span>Price Starts at $0.00</span>
+                    </div>
+                    <center><button class="btn btn-md cebBTN"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</button></center>
+            </div>
+
+            <div class="col-md-3 product-page-prodItem rightClearfix">
+                <div class="pdf-thumb-box"> <a href="#2013-Katalog">
+                            <div class="pdf-thumb-box-overlay">
+                            <span class="glyphicon glyphicon-zoom-in"></span>
+                        </span></div>
+                            <center><img class="img-responsive" src="http://placehold.it/180x100" alt="2013 Genel Katalog"></center>
+                        </a>
+
+                    </div>
+                    <div class="vertical-social-box"></div>
+
+                    <div class="product-name">
+                        <span style="color:#337ab7;">CEB Enterprise Leadership</span>
+                    </div>
+                    <div class="product-price" style="margin-bottom:3px;">
+                        <span>Price Starts at $0.00</span>
+                    </div>
+                    <center><button class="btn btn-md cebBTN"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</button></center>
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>
+
+</div>
+</body>
+</body>

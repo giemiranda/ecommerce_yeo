@@ -1,0 +1,199 @@
+<body ng-app="StockDogApp">
+<div class="row">
+    <div class="col-md-12 bc">
+        <ul class="breadcrumb">
+			<li class="completed"><a href="javascript:void(0);">Search</a></li>
+			<li class="completed"><a href="javascript:void(0);">Search Result</a></li>
+			<li class="completed"><a href="javascript:void(0);">Invoice</a></li>
+			<li class="completed"><a href="javascript:void(0);">Payment</a></li>
+      <li class="active"><a href="javascript:void(0);">Payment Review</a></li>
+		</ul>
+    </div>
+</div>
+<br>
+<div class="row" ng-controller="populated_data">
+    <div class="Gheader">
+        <h4>Payment Confirmation</h4>
+    </div>
+
+    <div class="headerContainer">
+            <div class="row">
+                <div class="col-md-3" style="text-align:left;">
+                    <h4>Receipt #: <b>{{invoice.ReceiptNum}}</b></h4>
+                </div>
+                <div class="col-md-4 pull-right">
+                  <h5 id="DateToday"></h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                <div class="Gheader">
+                    <h4>Billing Information</h4>
+                </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                  <br>
+                  <div class="col-md-12 myCa removePadding">
+                    <div class="form-group col-sm-2">
+                      <label for="fname" class="control-label">First Name:</label><br>
+                      <label>{{invoice.FirstName}}</label>
+                    </div>
+                    <div class="form-group col-sm-2">
+                      <label for="fname" class="control-label">Last Name:</label><br>
+                      <label>{{invoice.LastName}}</label>
+                    </div>
+                    <div class="form-group col-sm-2">
+                      <label for="fname" class="control-label">Company:</label><br>
+                      <label>{{invoice.Company}}</label>
+                    </div>
+                    <div class="form-group col-sm-2">
+                      <label for="fname" class="control-label">Phone Number:</label><br>
+                      <label>{{invoice.PhoneNum}}</label>
+                    </div>
+                    <div class="form-group col-sm-2">
+                      <label for="fname" class="control-label">Mobile Number:</label><br>
+                      <label>{{invoice.MobileNum}}</label>
+                    </div>
+                    <div class="form-group col-sm-2">
+                      <label for="fname" class="control-label">Email:</label><br>
+                      <label>{{invoice.Email}}</label>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12 myCa removePadding">
+                    <div class="form-group col-sm-6">
+                      <label for="fname" class="control-label">Address:</label><br>
+                      <label>{{invoice.Address}}</label>
+                    </div>
+                    <div class="form-group col-sm-6">
+                      <label for="fname" class="control-label">Billing Address:</label><br>
+                      <label>{{invoice.Address}}</label>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-responsive" border="0" style="border:0;">
+                        <tbody>
+                          <tr class="heading">
+                            <td class="tdInv">
+                                Invoice Number
+                            </td>
+
+                              <td class="tdInv">
+                                  Product Item
+                              </td>
+
+                              <td class="tdInv">
+                                  Unit Price
+                              </td>
+
+                              <td class="tdInv">
+                                Quantity
+                              </td>
+
+                              <td class="tdInv">
+                                  Sales Tax
+                              </td>
+
+                              <td class="tdInv">
+                                Sub Total
+                              </td>
+
+                              <td class="tdInv" style="text-align:right;">
+                                  Total
+                              </td>
+                          </tr>
+
+                          <tr class="item">
+                              <td>
+                                Invoice001
+                              </td>
+
+                              <td>
+                                  {{invoice.Item1}}
+                              </td>
+
+                              <td>
+                                  <label ng-model="itempr1" style="color:#be1313;">${{invoice.Item1Price}}</label>
+                              </td>
+
+                              <td>
+                                  {{invoice.Quantity}}
+                              </td>
+
+                              <td>
+                                $NaN
+                              </td>
+
+                              <td>
+                                  <label ng-model="itempr1" style="color:#be1313;">${{invoice.Item1Price}}</label>
+                              </td>
+
+                              <td style="text-align:right;">
+                                  <label ng-model="itempr1" style="color:#be1313;">${{invoice.Item1Price}}</label>
+                              </td>
+                          </tr>
+
+                          <tr class="item">
+                              <td>
+                                Invoice001
+                              </td>
+
+                              <td>
+                                  {{invoice.Item2}}
+                              </td>
+
+                              <td>
+                                  <label ng-model="itempr2" style="color:#be1313;">${{invoice.Item2Price}}</label>
+                              </td>
+
+                              <td>
+                                  {{invoice.Quantity}}
+                              </td>
+
+                              <td>
+                                $NaN
+                              </td>
+
+                              <td>
+                                  <label ng-model="itempr2" style="color:#be1313;">${{invoice.Item2Price}}</label>
+                              </td>
+
+                              <td style="text-align:right;">
+                                  <label ng-model="itempr2" style="color:#be1313;">${{invoice.Item2Price}}</label>
+                              </td>
+                          </tr>
+
+                          <tr class="total">
+                              <td style="border-top:0px;"></td>
+                              <td style="border-top:0px;"></td>
+                              <td style="border-top:0px;"></td>
+                              <td style="border-top:0px;"></td>
+                              <td style="border-top:0px;"></td>
+                              <td style="border-top:0px;"></td>
+
+                              <td style="text-align:right;">
+                                 <label class="control-label" style="font-size:16px;font-weight:bold;">Total: <span style="color:#be1313;">${{invoice.Item1Price + invoice.Item2Price}}</span></label>
+                              </td>
+                          </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <a href="#/thankyou" class="cebBTN btn btn-lg pull-right" style="margin-right:15px; margin-top:10px;">Confirm Payment</a>
+
+            </div>
+
+    </div>
+</div>
+
+    <script>
+        document.getElementById("DateToday").innerHTML = Date();
+    </script>
+</body>

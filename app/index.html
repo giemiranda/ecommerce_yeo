@@ -1,0 +1,268 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/font-awesome-4.6.3/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href="bower_components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+    <!-- endbuild -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  </head>
+  <body ng-app="stockDogApp">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div class="container-fluid">
+          <!--<div class="header">
+
+              <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="images/ceb_logo.png">
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="input-group stylish-input-group">
+                              <input type="text" class="form-control"  placeholder="Search" >
+                              <span class="input-group-addon">
+                                  <button type="submit">
+                                      <span class="glyphicon glyphicon-search"></span>
+                                  </button>
+                              </span>
+                          </div>
+                        </div>
+
+
+
+                        <script>
+
+                        $( document ).ready(function() {
+                    			$('ul.nav-pills li a').click(function (e) {
+                    			$('ul.nav-pills li.active').removeClass('active')
+                    			$(this).parent('li').addClass('active')
+                    			})
+                    		});
+
+                        $(document).ready(function () {
+                            $(".cart-btn, .minicart").hover(
+
+                            function () {
+                                $(".minicart").stop().slideDown(100);
+                            }, function () {
+                                $(".minicart").stop().slideUp(100);
+                            });
+                        });
+
+                        $(document).ready(function () {
+                            $(".cebG-btn, .cebGlobal").hover(
+
+                            function () {
+                                $(".cebGlobal").stop().slideDown(100);
+                            }, function () {
+                                $(".cebGlobal").stop().slideUp(100);
+                            });
+                        });
+                        </script>
+
+
+                        <div class="col-md-3 removePadding">
+                          <div class="">
+                          <div class="pull-right">
+                          <img src="images/user_login.png">
+                          &nbsp;
+                          <label style="color:#0070d2; font-weight:normal;">Welcome <b>John Doe</b>!</label>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-7 removePadding" style="margin-top:8px;">
+                              <div class="pull-right">
+                              <div class="cebG-btn">
+                              <label style="color:#0070d2; font-weight:normal;"><i class="fa fa-globe" aria-hidden="true"></i> CEB Global</label>
+                              </div>
+                              </div>
+                              <div class="cebGlobal">
+                                  <ul>
+                                      <li>Australlia</li>
+                                      <li>China</li>
+                                      <li>Duetschland</li>
+                                      <li>India</li>
+                                      <li>Singapore</li>
+                                      <li>South Africa</li>
+                                      <li>United Kingdom</li>
+                                  </ul>
+                              </div>
+                            </div>
+
+                            <div class="col-md-5 pull-right" style="padding-left:0px; margin-top:8px;">
+                              <div class="cart-btn">
+                                  <a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>My Cart</a>
+                              </div>
+                              &nbsp;
+                              <div class="minicart">
+                                  <table class="table">
+                                      <tr>
+                                          <td colspan="4" style="background-color:#1273cf; color:#f8f8f8; font-size:16px;"><b>My Cart</b></td>
+                                      </tr>
+                                      <tr>
+                                          <td><img src="http://placehold.it/50x50"/></td>
+                                          <td><p><a href="#">CIO OnSite</a></p>
+                                              <p style="color:#be1313;">2 x $9,800.00</p>
+                                          </td>
+                                          <td><center><button class="btn btn-xs product_cart_remove">X</button></center></td>
+                                      </tr>
+                                      <tr class="total_checkout_cart">
+                                          <td style="color:#be1313;">Total:</td>
+                                          <td colspan="2" style="color:#be1313;">$9,800.00</td>
+                                      </tr>
+                                      <tr>
+                                          <td>&nbsp;</td>
+                                          <td colspan="2"><a href="#/product_cart" class="cebBTN btn btn-md pull-right">View Cart</a></td>
+                                      </tr>
+                                  </table>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+
+                        </div>
+                    </div>
+
+              </div>
+
+            <ul class="nav nav-pills">
+              <li class="active"><a ng-href="#/main"><span class="glyphicon glyphicon-shopping-cart" style=""></span> CEB Store</a></li>
+              <li><a ng-href="#/my_account">My Account</a></li>
+                <li><a ng-href="#/search">Invoice Look Up</a></li>
+                <li><a ng-href="#/contactus">Contact Us</a></li>
+            </ul>
+          </div>-->
+
+        <div class="container-fluid">
+          <div ng-view=""></div>
+        </div>
+
+          <div class="footer">
+
+          </div>
+
+        <div class="footer2">
+            <div class="container">
+                <div class="row">
+                    <hr>
+                    <div class="col-md-9">
+                        <ul>
+                            <li><a href="#">Investors</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Privacy Statement</a></li>
+                            <li><a href="#">Copyright Inquiries</a></li>
+                            <li><a href="#">Site Map</a></li>
+                        </ul>
+                        <p>2016 CEB. All Rights Reserved.</p>
+                    </div>
+
+                    <div class="col-md-3 removePaddingRight" style="padding-left:70px;">
+                        <h4 style="margin-top:0px; color:#f3f3f3;"><b>Connect With Us</b></h4>
+                        <ul>
+                            <li><i class="fa fa-linkedin-square" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-facebook-square" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-google-plus-square" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-twitter-square" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-pinterest-square" aria-hidden="true"></i></li>
+                        </ul>
+                        <ul>
+                            <li><i class="fa fa-youtube-square" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-rss-square" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-slideshare" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-instagram" aria-hidden="true"></i></li>
+                            <li><img src="images/cebsquare.png" style="margin-top:-10px; margin-left:-3px;"/></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/oldieshim.js -->
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
+    <![endif]-->
+    <!-- endbuild -->
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/product_page.js"></script>
+        <script src="scripts/controllers/product_cart.js"></script>
+        <script src="scripts/controllers/product_configure.js"></script>
+        <script src="scripts/controllers/my_account.js"></script>
+        <script src="scripts/controllers/contact_us.js"></script>
+        <script src="scripts/controllers/invoiceList.js"></script>
+        <script src="scripts/controllers/invoice.js"></script>
+        <script src="scripts/controllers/order_confirmation.js"></script>
+        <script src="scripts/controllers/order_confirmation2.js"></script>
+        <script src="scripts/controllers/product_cart.js"></script>
+        <script src="scripts/controllers/product_page.js"></script>
+        <script src="scripts/controllers/my_invoice.js"></script>
+        <script src="scripts/controllers/populated_data.js"></script>
+        <script src="scripts/controllers/search.js"></script>
+        <script src="scripts/controllers/search_alt1.js"></script>
+        <script src="scripts/controllers/invoicePaid.js"></script>
+
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/account_program.js"></script>
+        <script src="scripts/controllers/forgot_password.js"></script>
+
+        <script src="scripts/controllers/store_home.js"></script>
+        <script src="scripts/controllers/store_home_alternate_2.js"></script>
+        <script src="scripts/controllers/store_home_alternate_3.js"></script>
+        <script src="scripts/controllers/store_home_alternate_4.js"></script>
+
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
+        <!-- endbuild -->
+</body>
+</html>

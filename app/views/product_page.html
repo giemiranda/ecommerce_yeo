@@ -1,0 +1,145 @@
+<body ng-app="stockDogApp">
+
+<style>
+.rightClearfix{
+  margin-right: 10px;
+}
+</style>
+
+<div ng-include="'views/header.html'" class="container-fluid"></div>
+<div class="container">
+
+<div class="row" ng-controller="productPageCtrl">
+    <div class="col-md-12">
+        <h4 style="color:#00AEEF; font-weight:500; font-size:24px;">Product Detail Page</h4>
+        <hr style="margin-top:0px; margin-bottom:15px;">
+        <div class="row product-page-image">
+            <div class="col-md-4" style="padding-right:0px;">
+                <img ng-src="{{prodPage.Image}}" class="img-responsive">
+            </div>
+
+            <div class="col-md-8 product-page-desc" style="padding-left:0px;">
+                <h2 style="margin-top:0px;">{{prodPage.ProductName}}</h2>
+                <div class="product-page-price">
+                    <span><h2>${{prodPage.Price}}</h2></span>
+                </div>
+
+                <div class="product-page-descInner">
+                    <p>{{prodPage.Description}}</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="product-page-quantity">
+                            <div class="form-group product-page-quantity-fg">
+                                <span for="name" class="col-xs-2">Quantity:</span>
+                                  <div class="col-xs-3">
+                                      <input type="text" class="form-control" name="name" id="name">
+                                  </div>
+                                &nbsp;&nbsp;&nbsp;<a href="#/product_cart" class="btn cebBTN btn-md"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row product_cart_int">
+            <div class="col-md-12">
+                <div class="product_cart_header">
+                    <label style="color:#f2f2f2; font-size:15px; line-height:30px;">Other product you may interested</label>
+                </div>
+
+                <div class="row product-page-consider-prods">
+                    <div class="col-md-3 product-page-prodItem rightClearfix">
+                        <div class="pdf-thumb-box"> <a href="#2013-Katalog">
+                                    <div class="pdf-thumb-box-overlay">
+                                    <span class="glyphicon glyphicon-zoom-in"></span>
+                                </span></div>
+                                    <center><img class="img-responsive" src="http://placehold.it/180x100" alt="2013 Genel Katalog"></center>
+                                </a>
+
+                            </div>
+                            <div class="vertical-social-box"></div>
+
+                            <div class="product-name">
+                                <span style="color:#337ab7;">CEB Enterprise Leadership</span>
+                            </div>
+                            <div class="product-price" style="margin-bottom:3px;">
+                                <span>Price Starts at $0.00</span>
+                            </div>
+                            <center><button class="btn btn-md cebBTN"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</button></center>
+                    </div>
+
+                    <div class="col-md-3 product-page-prodItem rightClearfix">
+                        <div class="pdf-thumb-box"> <a href="#2013-Katalog">
+                                    <div class="pdf-thumb-box-overlay">
+                                    <span class="glyphicon glyphicon-zoom-in"></span>
+                                </span></div>
+                                    <center><img class="img-responsive" src="http://placehold.it/180x100" alt="2013 Genel Katalog"></center>
+                                </a>
+
+                            </div>
+                            <div class="vertical-social-box"></div>
+
+                            <div class="product-name">
+                                <span style="color:#337ab7;">CEB Enterprise Leadership</span>
+                            </div>
+                            <div class="product-price" style="margin-bottom:3px;">
+                                <span>Price Starts at $0.00</span>
+                            </div>
+                            <center><button class="btn btn-md cebBTN"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</button></center>
+                    </div>
+
+                    <div class="col-md-3 product-page-prodItem rightClearfix">
+                        <div class="pdf-thumb-box"> <a href="#2013-Katalog">
+                                    <div class="pdf-thumb-box-overlay">
+                                    <span class="glyphicon glyphicon-zoom-in"></span>
+                                </span></div>
+                                    <center><img class="img-responsive" src="http://placehold.it/180x100" alt="2013 Genel Katalog"></center>
+                                </a>
+
+                            </div>
+                            <div class="vertical-social-box"></div>
+
+                            <div class="product-name">
+                                <span style="color:#337ab7;">CEB Enterprise Leadership</span>
+                            </div>
+                            <div class="product-price" style="margin-bottom:3px;">
+                                <span>Price Starts at $0.00</span>
+                            </div>
+                            <center><button class="btn btn-md cebBTN"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</button></center>
+                    </div>
+
+                    <div class="col-md-3 product-page-prodItem rightClearfix">
+                        <div class="pdf-thumb-box"> <a href="#2013-Katalog">
+                                    <div class="pdf-thumb-box-overlay">
+                                    <span class="glyphicon glyphicon-zoom-in"></span>
+                                </span></div>
+                                    <center><img class="img-responsive" src="http://placehold.it/180x100" alt="2013 Genel Katalog"></center>
+                                </a>
+
+                            </div>
+                            <div class="vertical-social-box"></div>
+
+                            <div class="product-name">
+                                <span style="color:#337ab7;">CEB Enterprise Leadership</span>
+                            </div>
+                            <div class="product-price" style="margin-bottom:3px;">
+                                <span>Price Starts at $0.00</span>
+                            </div>
+                            <center><button class="btn btn-md cebBTN"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</button></center>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+</body>

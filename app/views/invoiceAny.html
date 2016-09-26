@@ -1,0 +1,177 @@
+<style>
+.tdInv{
+  background-color: #0A3F6B !important;
+  color: #f8f8f8 !important;
+}
+
+@media print {
+  .tdInv{
+    background-color: #0075bc !important;
+    color: #f8f8f8 !important;
+  }
+}
+</style>
+
+<body ng-app="stockDogApp">
+<div ng-include="'views/header2.html'" class="container-fluid"></div>
+<div class="container">
+
+<div class="row">
+    <div class="col-md-12 bc">
+        <ul class="breadcrumb">
+			<li class="completed"><a href="javascript:void(0);">Search</a></li>
+			<li class="active"><a href="javascript:void(0);">Invoice</a></li>
+		</ul>
+    </div>
+</div>
+<br>
+<div class="row" >
+
+<div class="Gheader">
+            <h4>Invoice</h4>
+        </div>
+
+<div class="headerContainer" id="printInv">
+
+<div class="invoice-box" ng-controller="InvoiceCtrl">
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td class="title">
+                                <img src="../images/logo-ceb.png" style="width:30%; max-width:300px;">
+                            </td>
+
+                            <td>
+                                Invoice #: {{ invoice.InvoiceNumber }}<br>
+                                Created: {{ invoice.CreateDate }}<br>
+                                Due Date: {{invoice.DueDate}}<br>
+                                Status: Unpaid
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr class="information">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td style="width:190px !important;">
+                                {{invoice.CompanyAddress}}
+                            </td>
+
+                            <td>
+                                {{invoice.Company}}<br>
+                                {{invoice.Name}}<br>
+                                {{invoice.Email}}<br>
+                                {{invoice.Number}}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <!--<tr class="heading">
+                <td class="tdInv">
+                    Payment Method
+                </td>
+
+                <td class="tdInv">
+                    Card #
+                </td>
+            </tr>
+
+            <tr class="details">
+                <td>
+                    {{invoice.CreditCard}}
+                </td>
+
+                <td>
+                    {{invoice.CreditCardNum}}
+                </td>
+            </tr>-->
+            <table class="table table-responsive table-striped">
+              <tbody>
+            <tr class="heading">
+                <td class="tdInv">
+                    Item
+                </td>
+
+                <td class="tdInv">
+                    Price
+                </td>
+            </tr>
+
+            <tr class="item">
+                <td>
+                    {{invoice.Item1}}
+                </td>
+
+                <td>
+                    <label ng-model="itempr1" style="color:#850606;">${{invoice.Item1Price}}</label>
+                </td>
+            </tr>
+
+            <tr class="item">
+                <td>
+                    {{invoice.Item2}}
+                </td>
+
+                <td>
+                    <label ng-model="itempr2" style="color:#850606;">${{invoice.Item2Price}}</label>
+                </td>
+            </tr>
+
+            <tr class="total">
+                <td></td>
+
+                <td>
+                   Total: <label style="color:#850606;">${{invoice.Item1Price + invoice.Item2Price}}</label>
+                </td>
+            </tr>
+          </tbody>
+        </table>
+        </table>
+        <br>
+        <a href="#/payment2" class="cebBTN btn btn-lg pull-right" style="margin-left:8px;">Pay Invoice</a>&nbsp;&nbsp;
+        <button class="cebBTN btn btn-lg pull-right" onclick="printDiv('printInv')">Print Pdf</button>
+        <br>
+    </div>
+    </div>
+</div>
+
+    <script>
+    function printDiv(printInv) {
+         var printContents = document.getElementById(printInv).innerHTML;
+         var originalContents = document.body.innerHTML;
+
+         document.body.innerHTML = printContents;
+
+         if (window.print()) {
+            return false;
+          } else {
+            location.reload();
+          }
+
+         document.body.innerHTML = originalContents;
+
+
+
+    }
+
+function printReport() {
+  var divElements = $('#printInv').html();
+  var divToPrint = document.getElementById('#printInv');
+  var popupWin = window.open('', '_blank', 'width=800,height=500');
+
+  popupWin.document.open();
+  popupWin.document.write('<html><body onload="window.print()">' + divElements + '</html>');
+  popupWin.document.close();
+}
+
+    </script>
+
+</div>
+</body>

@@ -1,0 +1,59 @@
+<body ng-app="stockDogApp">
+<div class="row" ng-controller="myInvoiceCtrl">
+    <div>
+        <h5>My Invoices</h5>
+    </div>
+    <hr>
+    <div class="col-md-12">
+        <table class="table table-hover table-striped searchList">
+            <thead>
+                <tr>
+                    <th>Invoice Number</th>
+                    <th>Due Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--<tr>
+                    <td><a href="#/invoice">+1-754-3010</a></td>
+                    <td><a href="#/invoice">July 27,2016</a></td>
+                    <td><a href="#/invoice">$385.00</a></td>
+                    <td><a href="#/invoice">Pending</a></td>
+                </tr>
+                <tr>
+                    <td>(541-754-3010</td>
+                    <td>August 2,2016</td>
+                    <td>$1827.00</td>
+                    <td>Paid</td>
+                </tr>
+                <tr>
+                    <td>001-654-3010</td>
+                    <td>August 14,2016</td>
+                    <td>$231.00</td>
+                    <td>Pending</td>
+                </tr>-->
+                
+                <tr ng-repeat="invoice in invlist">
+                    <td><a href="#/invoice">{{ invoice.InvoiceNumber }}</a></td>
+                    <td><a href="#/invoice">{{ invoice.DueDate }}</a></td>
+                    <td><a href="#/invoice">${{ invoice.Amount }}</a></td>
+                    <td><a href="#/invoice">{{ invoice.Status }}</a></td>
+                </tr>
+                <!--<tr>
+                    <td>Invoice002</td>
+                    <td>August 2,2016</td>
+                    <td>$1827.00</td>
+                    <td>Pending</td>
+                </tr>
+                <tr>
+                    <td>Invoice003</td>
+                    <td>August 14,2016</td>
+                    <td>$231.00</td>
+                    <td>Pending</td>
+                </tr>-->
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
